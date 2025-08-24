@@ -24,6 +24,7 @@ model HR {
   image     String?                        // Profile picture URL
   phone     String?                        // Phone number
   address   String?                        // Address
+  isVerified Boolean @default(false)
   createdAt DateTime @default(now())
 }
 

@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import router from "./routes/authRoute.js";
 
 // Initialize dotenv 
 dotenv.config();
@@ -17,6 +18,11 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send("Hello, HR Management System!");
 });
+
+
+
+
+app.use("/api/auth", router);
 
 
 
