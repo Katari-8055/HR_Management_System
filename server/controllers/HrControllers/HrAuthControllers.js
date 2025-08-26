@@ -1,6 +1,7 @@
-import prisma from "../utils/Prisma.js";
+import prisma from "../../utils/Prisma.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { sendEmail } from "../../utils/OTPmailer.js";
 
 
 
@@ -46,6 +47,19 @@ export const signupHR = async (req, res) => {
             secure: process.env.NODE_ENV === "production",
             maxAge: 24 * 60 * 60 * 1000, // 1 day
         });
+
+        //generate OTP
+        const otp = Math.floor(100000 + Math.random() * 900000);
+        
+
+        //sending OTP on email
+        await sendEmail(
+            newHR.email,
+            "Welcome to HR Management System",
+            `Hello ${newHR.name},\n\nYour account has been successfully created. Your OTP is: ${otp}\n\nThank you!`
+        );
+
+        
 
         return res.json({
             success: true,
