@@ -10,11 +10,11 @@ export const sendEmail = async (to, subject, text) => {
     text,
   };
 
-  console.log("📧 Sending Email:", msg);
+  // console.log("📧 Sending Email:", msg);
 
   try {
     await sgMail.send(msg);
-    console.log("✅ Email sent successfully");
+    // console.log("✅ Email sent successfully");
   } catch (error) {
     console.error("❌ SendGrid Error:", error.response?.body || error);
     throw error;

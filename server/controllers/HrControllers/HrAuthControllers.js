@@ -2,6 +2,7 @@ import prisma from "../../utils/Prisma.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { sendEmail } from "../../utils/OTPmailer.js";
+import redis from "../../utils/redis.js";
 
 
 
@@ -51,6 +52,8 @@ export const signupHR = async (req, res) => {
         //generate OTP
         const otp = Math.floor(100000 + Math.random() * 900000);
         
+         // store OTP in Redis with 10 min expiry
+        await redis.set(`otp:${newHR.id}`, otp, { ex: 600 });
 
         //sending OTP on email
         await sendEmail(
