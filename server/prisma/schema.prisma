@@ -19,8 +19,8 @@ model HR {
   name      String
   email     String   @unique
   password  String
-  role      Role     @default(HR)          // Always HR
-  birthday  DateTime?                      // Optional birthday
+  role       Role     @default(HR)          // Always HR
+  birthday  DateTime?                     // Optional birthday
   image     String?                        // Profile picture URL
   phone     String?                        // Phone number
   address   String?                        // Address

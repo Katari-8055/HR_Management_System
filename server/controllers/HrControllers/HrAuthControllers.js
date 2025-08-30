@@ -31,18 +31,18 @@ export const signupHR = async (req, res) => {
                 name,
                 email,
                 password: hashedPassword,
-                role: "HR",  // role enum
+                role: "HR",  
             },
         });
 
-        // generate JWT (valid for 1 day)
+
         const token = jwt.sign(
             { id: newHR.id, email: newHR.email, role: newHR.role },
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
         );
 
-        // set token in cookie (1 day)
+        
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
@@ -53,16 +53,14 @@ export const signupHR = async (req, res) => {
         const otp = Math.floor(100000 + Math.random() * 900000);
         
          // store OTP in Redis with 10 min expiry
-        await redis.set(`otp:${newHR.id}`, otp, { ex: 600 });
+        await redis.set(`otp:${newHR.id}`, String(otp), { ex: 600 });
 
-        //sending OTP on email
+        
         await sendEmail(
             newHR.email,
             "Welcome to HR Management System",
             `Hello ${newHR.name},\n\nYour account has been successfully created. Your OTP is: ${otp}\n\nThank you!`
         );
-
-        
 
         return res.json({
             success: true,
@@ -76,6 +74,93 @@ export const signupHR = async (req, res) => {
         });
     } catch (error) {
         console.error("Signup Error:", error);
+        return res.status(500).json({ success: false, message: "Server error" });
+    }
+}
+
+
+// OTP verification---------------------------------------------------------------------->
+export const verifyOtp = async (req, res) => {
+    const { hrId, otp } = req.body;
+
+    try {
+        if (!hrId || !otp) {
+            return res.json({ success: false, message: "HR ID and OTP are required" });
+        }
+
+        // get OTP from redis
+        const storedOtp = await redis.get(`otp:${hrId}`);
+
+        if (!storedOtp) {
+            return res.json({ success: false, message: "OTP expired or not found" });
+        }
+        
+        // compare OTPs
+        if (Number(storedOtp) !== Number(otp)) {
+            return res.json({ success: false, message: "Invalid OTP" });
+        }
+        console.log("Stored OTP:", storedOtp, "Provided OTP:", otp);
+
+        
+        await redis.del(`otp:${hrId}`);
+
+       
+        await prisma.hR.update({
+            where: { id: Number(hrId) },
+            data: { isVerified: true },  
+        });
+
+        return res.json({ success: true, message: "OTP verified successfully" });
+    } catch (error) {
+        console.error("OTP Verification Error:", error);
+        return res.status(500).json({ success: false, message: "Server error" });
+    }
+};
+
+//HR Login----------------------------------------------------------------------------------->
+
+
+export const loginHR = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+
+        if (!email || !password) {
+            return res.json({ success: false, message: "All fields are required" });
+        }
+
+        const hr = await prisma.hR.findUnique({ where: { email } });
+        if (!hr) {
+            return res.json({ success: false, message: "Invalid credentials" });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, hr.password);
+
+        if (!isPasswordValid) {
+            return res.json({ success: false, message: "Invalid credentials" });
+        }
+
+        const token = jwt.sign(
+            { id: hr.id, email: hr.email, role: hr.role },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+        );
+
+         res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+        });
+
+        res.json({ success: true, message: "Login successful", 
+            user: {
+            id: hr.id,
+            name: hr.name,
+            email: hr.email,
+            role: hr.role,
+            }
+        })
+    } catch (error) {
+        console.error("Login Error:", error);
         return res.status(500).json({ success: false, message: "Server error" });
     }
 }
