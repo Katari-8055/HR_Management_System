@@ -31,3 +31,114 @@ model HR {
 enum Role {
   HR
 }
+
+
+//---------------------------------------------------------------------------------------->
+
+model Employee {
+  id                String     @id @default(cuid())
+  employeeId        String     @unique
+  firstName         String
+  lastName          String?
+  email             String     @unique
+  phone             String?
+  dateOfBirth       DateTime?
+  gender            Gender?    @default(OTHER)
+  position          String?
+
+  // Address
+  street            String?
+  city              String?
+  state             String?
+  zip               String?
+  country           String?
+
+  // Employment Details
+  dateOfJoining     DateTime
+  employmentType    EmploymentType   @default(FULL_TIME)
+  status            EmploymentStatus @default(ACTIVE)
+  salary            Float            @default(50000)
+
+  // Bank Details
+  accountNo         String?
+  ifsc              String?
+  bankName          String?
+
+  // Emergency Contact
+  emergencyName     String?
+  emergencyRelation String?
+  emergencyPhone    String?
+
+  // Govt IDs
+  pan               String? @unique
+  aadhaar           String? @unique
+  passport          String? @unique
+
+  // Employee Role
+  role              Roles @default(EMPLOYEE)
+
+  // Relations
+  department        Department? @relation(fields: [departmentId], references: [id])
+  departmentId      String?
+
+  team              Team?       @relation("TeamMembers", fields: [teamId], references: [id])
+  teamId            String?
+
+  managedTeams      Team[]      @relation("TeamManager")
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Department {
+  id          String     @id @default(cuid())
+  name        String
+  employees   Employee[]
+}
+
+model Team {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+
+  // Manager (One Employee can manage many Teams)
+  managerId   String
+  manager     Employee   @relation("TeamManager", fields: [managerId], references: [id])
+
+  // Members (Many Employees can belong to one Team)
+  members     Employee[] @relation("TeamMembers")
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  INTERN
+  CONTRACT
+}
+
+enum EmploymentStatus {
+  ACTIVE
+  INACTIVE
+  ON_LEAVE
+  TERMINATED
+}
+
+enum Roles {
+  HR
+  MANAGER
+  EMPLOYEE
+}
+
+enum TeamRole {
+  MEMBER
+  LEAD
+}
