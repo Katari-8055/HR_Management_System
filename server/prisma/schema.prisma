@@ -45,6 +45,7 @@ model Employee {
   dateOfBirth       DateTime?
   gender            Gender?    @default(OTHER)
   position          String?
+  password          String?
 
   // Address
   street            String?
@@ -54,7 +55,7 @@ model Employee {
   country           String?
 
   // Employment Details
-  dateOfJoining     DateTime
+  dateOfJoining     DateTime?
   employmentType    EmploymentType   @default(FULL_TIME)
   status            EmploymentStatus @default(ACTIVE)
   salary            Float            @default(50000)
@@ -73,6 +74,9 @@ model Employee {
   pan               String? @unique
   aadhaar           String? @unique
   passport          String? @unique
+
+  setupToken        String?   // for password setup
+  setupTokenExpiry  DateTime? // expiry time for token
 
   // Employee Role
   role              Roles @default(EMPLOYEE)
