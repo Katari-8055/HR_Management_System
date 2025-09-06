@@ -35,20 +35,6 @@ export const signupHR = async (req, res) => {
             },
         });
 
-
-        const token = jwt.sign(
-            { id: newHR.id, email: newHR.email, role: newHR.role },
-            process.env.JWT_SECRET,
-            { expiresIn: "1d" }
-        );
-
-        
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
-        });
-
         //generate OTP
         const otp = Math.floor(100000 + Math.random() * 900000);
         
@@ -62,6 +48,20 @@ export const signupHR = async (req, res) => {
             `Hello ${newHR.name},\n\nYour account has been successfully created. Your OTP is: ${otp}\n\nThank you!`
         );
 
+        // Create JWT
+        const token = jwt.sign(
+            { id: newHR.id, email: newHR.email, role: newHR.role },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+        );
+
+        // Store cookie
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+        });
+
         return res.json({
             success: true,
             message: "HR signup successful",
@@ -72,6 +72,9 @@ export const signupHR = async (req, res) => {
                 role: newHR.role,
             },
         });
+
+        
+
     } catch (error) {
         console.error("Signup Error:", error);
         return res.status(500).json({ success: false, message: "Server error" });
@@ -81,10 +84,11 @@ export const signupHR = async (req, res) => {
 
 // OTP verification---------------------------------------------------------------------->
 export const verifyOtp = async (req, res) => {
-    const { hrId, otp } = req.body;
+    const { otp } = req.body;
 
     try {
-        if (!hrId || !otp) {
+        const hrId = req.hr.id; // Assuming HR ID is stored in req.hr by HR middleware
+        if (!otp) {
             return res.json({ success: false, message: "HR ID and OTP are required" });
         }
 

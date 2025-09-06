@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 import router1 from "./routes/routeHR/authRoute.js";
 import router2 from "./routes/OtherHrRoute/HrRoute.js";
 import router3 from "./routes/EmployeeRoutes/employeeRoute.js";
@@ -13,6 +14,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 

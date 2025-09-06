@@ -8,6 +8,13 @@ export const addEmployee = async (req, res) => {
     const { firstName, lastName, email, salary, employeeId } = req.body;
 
     try {
+        const hrId = req.hr.id; // Assuming HR ID is stored in req.hr by HR middleware
+        // Check if HR is verified
+        const hr = await prisma.hR.findUnique({ where: { id: hrId } });
+        if (!hr || !hr.isVerified) {
+            return res.status(403).json({ success: false, message: "HR account not verified. Please verify your account to add employees." });
+        }
+        
         const existingEmployee = await prisma.employee.findUnique({ where: { email } });
         if (existingEmployee) {
             return res.json({ success: false, message: "Employee with this email already exists" });

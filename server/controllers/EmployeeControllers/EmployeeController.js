@@ -95,8 +95,24 @@ export const loginEmployee = async (req, res) => {
 
 //-------------------------------------------------------------Adding More Employee Details--------------------------------------------------//
 
-// export const addEmployeeDetails = async (req, res) => {
-//     const{ phone,  dateOfBirth ,gender, position, street, city, state , zip, country, accountNo, ifsc, bankName,emergencyName,
-//         emergencyRelation,emergencyPhone,pan,aadhaar,passport
-//     } = req.body;
-// }
+export const addEmployeeDetails = async (req, res) => {
+    const{ phone,  dateOfBirth ,gender, position, street, city, state , zip, country, accountNo, ifsc, bankName,emergencyName,
+        emergencyRelation,emergencyPhone,pan,aadhaar,passport
+    } = req.body;
+
+    try {
+        const employeeId = req.employee.id;
+        await prisma.employee.update({
+            where: { id: employeeId },
+            data: {
+                phone,
+                dateOfBirth: new Date(dateOfBirth), gender, position, street, city, state, zip, country, accountNo, ifsc,bankName,
+                emergencyName,  emergencyRelation,  emergencyPhone, pan, aadhaar, passport }
+        });
+
+        res.json({ success: true, message: "Employee details added successfully" });
+    } catch (error) {
+        console.error("Error adding employee details:", error);
+        return res.status(500).json({ success: false, message: "Server error" });
+    }
+}
