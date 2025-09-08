@@ -33,12 +33,17 @@ const Login = () => {
       });
 
       console.log("Login success:", res.data);
+      const userRole = res.data.user.role.toLowerCase();
 
-        // ✅ Role ke hisaab se redirect
-        if (formData.role === "hr") {
+        // ✅ Role ke hisaab se redirect----------------------------------->
+        if (userRole === "hr") {
           navigate("/hrdashoard");
-        } else {
+        } else if (userRole === "employee") {
           navigate("/employeedashboard");
+        }else if(userRole==="admin"){ 
+          navigate("/managerdashboard")
+        }else{
+          navigate("/");
         }
       
     } catch (err) {
