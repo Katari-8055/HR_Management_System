@@ -1,26 +1,56 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    role: "EMPLOYEE", // default role
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login data:", formData);
-    // ✅ yaha backend API call karna hai login ke liye
+    setLoading(true);
+    setError("");
+
+    try {
+      // ✅ Role ke hisaab se endpoint choose
+      const endpoint =
+        formData.role === "hr"
+          ? "http://localhost:3000/api/auth/loginHr"
+          : "http://localhost:3000/api/employee/loginEmployee";
+
+      const res = await axios.post(endpoint, formData, {
+        withCredentials: true,
+      });
+
+      console.log("Login success:", res.data);
+
+        // ✅ Role ke hisaab se redirect
+        if (formData.role === "hr") {
+          navigate("/hrdashoard");
+        } else {
+          navigate("/employeedashboard");
+        }
+      
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-        {/* Logo / Title */}
         <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
           HR Management System
         </h1>
@@ -28,8 +58,23 @@ const Login = () => {
           Login to your account
         </h2>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Role Select */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Select Role
+            </label>
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="employee">Employee</option>
+              <option value="hr">HR</option>
+            </select>
+          </div>
+
           {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -62,35 +107,19 @@ const Login = () => {
             />
           </div>
 
-          {/* Forgot Password */}
-          <div className="text-right">
-            <a
-              href="/forgot-password"
-              className="text-sm text-blue-600 hover:underline"
-            >
-              Forgot Password?
-            </a>
-          </div>
+          {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          {/* Submit Button */}
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
-
-        {/* Footer Links */}
-        <p className="text-sm text-gray-600 text-center mt-6">
-          Don’t have an account?{" "}
-          <a href="/signup" className="text-blue-600 hover:underline">
-            Signup
-          </a>
-        </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
