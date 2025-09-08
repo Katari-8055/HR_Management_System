@@ -103,8 +103,7 @@ export const verifyOtp = async (req, res) => {
         if (Number(storedOtp) !== Number(otp)) {
             return res.json({ success: false, message: "Invalid OTP" });
         }
-        console.log("Stored OTP:", storedOtp, "Provided OTP:", otp);
-
+        
         
         await redis.del(`otp:${hrId}`);
 
