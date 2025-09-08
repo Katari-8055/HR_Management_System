@@ -26,3 +26,14 @@ Backend: Node.js, Express.js
 Database: PostgreSQL / MySQL / SQLite
 ORM: Prisma ORM
 Authentication: JWT / Session
+
+
+
+
+
+Roadmap and Learning Path------------------------------------------------>
+
+#Day1 ---------------------->
+
+ (a)how to store otp in redis and how to verify otp
+ (b)query of prisma database await prisma.user.findUnique({where: {email: email}});
