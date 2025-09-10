@@ -37,7 +37,7 @@ const Login = () => {
 
         // ✅ Role ke hisaab se redirect----------------------------------->
         if (userRole === "hr") {
-          navigate("/hrdashoard");
+          navigate("/hr/overview");
         } else if (userRole === "employee") {
           navigate("/employeedashboard");
         }else if(userRole==="admin"){ 
