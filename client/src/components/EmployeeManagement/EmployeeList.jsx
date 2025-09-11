@@ -1,6 +1,7 @@
 import React from "react";
 import { employees } from "../../assets/Data";
 import { Eye, Edit, MoreVertical } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
   return (
@@ -65,9 +66,12 @@ const EmployeeList = () => {
 
                 {/* Actions */}
                 <td className="py-3 px-4 flex gap-2">
+                  <Link to={`/hr/employeemanagement/${emp.id}`}>
                   <button className="p-2 rounded-full hover:bg-blue-50 text-gray-600 hover:text-blue-600 transition cursor-pointer">
                     <Eye className="w-5 h-5" />
                   </button>
+                  </Link>
+                  
                   <button className="p-2 rounded-full hover:bg-green-50 text-gray-600 hover:text-green-600 transition cursor-pointer">
                     <Edit className="w-5 h-5" />
                   </button>

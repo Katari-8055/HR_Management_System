@@ -10,6 +10,7 @@ import Overview from "./pages/HRDashboard/Overview";
 import TaskManagement from "./pages/HRDashboard/TaskManagement";
 import EmployeeManagemnet from "./pages/HRDashboard/EmployeeManagemnet";
 import LeaveManagement from "./pages/HRDashboard/LeaveManagement";
+import EmployeeDetails from "./pages/HRDashboard/EmployeeDetails";
 
 
 
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/hr/overview" element={<Overview/>}/>
         <Route path="/hr/taskmanagement" element={<TaskManagement/>}/>
         <Route path="/hr/employeemanagement" element={<EmployeeManagemnet/>}/>
+        <Route path="/hr/employeemanagement/:id" element={<EmployeeDetails/>}/>
         <Route path="/hr/leavemanagement" element={<LeaveManagement/>}/>
       </Routes>
     </Router>
