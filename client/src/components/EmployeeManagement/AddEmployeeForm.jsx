@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const AddEmployeeForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ const AddEmployeeForm = ({ onClose }) => {
 
   const [loading, setLoading] = useState(false); // 👈 loading state
 
-  const handleChange = (e) => {
+  const handleChange =  (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -19,17 +20,20 @@ const AddEmployeeForm = ({ onClose }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     console.log("Employee Data:", formData);
 
-    // 👉 simulate API call
-    setTimeout(() => {
+    try {
+      const res = await axios.post("http://localhost:3000/api/employee/addEmployee", formData, { withCredentials: true });
+      console.log("Server Response:", res.data);
       setLoading(false);
       onClose();
-    }, 2000); // 2 sec ke baad close hoga
+    } catch (error) {
+      console.error("Error adding employee:", error);
+    }
   };
 
   return (
