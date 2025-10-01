@@ -167,3 +167,17 @@ export const loginHR = async (req, res) => {
         return res.status(500).json({ success: false, message: "Server error" });
     }
 }
+
+
+
+//HR Logout----------------------------------------------------------------------------------->
+
+
+export const logoutHR = (req, res) => {
+  res.clearCookie("token"); // removes the cookie named "token"
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
+
+//Get HR Name----------------------------------------------------------------------------------->
+

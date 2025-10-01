@@ -33,6 +33,7 @@ const AddEmployeeForm = ({ onClose }) => {
       onClose();
     } catch (error) {
       console.error("Error adding employee:", error);
+      setLoading(false);
     }
   };
 

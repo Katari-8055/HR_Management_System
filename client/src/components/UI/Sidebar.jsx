@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { LayoutDashboard, Users, CheckSquare, Calendar, User, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [name, setname ] = useState("");
+  const navigate = useNavigate();
+
 
   const navigationItems = [
     { label: "Dashboard", path: "/hr/overview", icon: <LayoutDashboard size={20} /> },
@@ -12,13 +18,41 @@ const Sidebar = () => {
     { label: "Leave Management", path: "/hr/leavemanagement", icon: <Calendar size={20} />, badge: 1 },
   ];
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:3000/api/auth/logoutHr", {}, { withCredentials: true });
+      if (res.status === 200) {
+        console.log("Logout successful");
+        navigate("/login"); 
+      }
+    } catch (error) {
+      console.error("Logout Error:", error);
+    }
+  };
+
+  useEffect(() => {
+  const profileHandler = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/hr/hrDetails", { withCredentials: true });
+      if (res.status === 200) {
+        setname(res.data.hr.name);
+      }
+    } catch (error) {
+      console.error("Profile Error:", error);
+    }
+  };
+
+  profileHandler();
+}, []); 
+
   return (
     <aside
-      className={`h-screen bg-white border-r shadow-sm transition-all duration-300 
+      className={` h-screen bg-white border-r shadow-sm transition-all duration-300 
         ${collapsed ? "w-16" : "w-64"}`}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b">
+      <div className="flex items-center justify-between p-4 border-b ">
         {!collapsed && <h1 className="font-bold text-lg">HRConnect Pro</h1>}
         <button
           onClick={() => setCollapsed(!collapsed)}
@@ -29,15 +63,15 @@ const Sidebar = () => {
       </div>
 
       {/* Profile */}
-      <div className="p-4 border-b">
+      <div className="p-4 border-b ">
         <button
           onClick={() => setProfileOpen(!profileOpen)}
-          className="flex items-center space-x-3 w-full hover:bg-gray-100 p-2 rounded"
+          className="flex items-center space-x-3 w-full hover:bg-gray-100 p-2 rounded cursor-pointer"
         >
-          <div className="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center ">
             <User size={16} color="white" />
           </div>
-          {!collapsed && <span className="text-sm font-medium">Rahul Bind</span>}
+          {!collapsed && <span className="text-sm font-medium">{name}</span>}
         </button>
 
         {profileOpen && (
@@ -45,7 +79,7 @@ const Sidebar = () => {
             <a href="/profile" className="block px-4 py-2 text-sm hover:bg-gray-100">
               Profile
             </a>
-            <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2">
+            <button onClick={submitHandler} className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 cursor-pointer">
               <LogOut size={16} />
               <span>Logout</span>
             </button>
