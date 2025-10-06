@@ -1,7 +1,7 @@
 import Sidebar from "../../components/UI/Sidebar.jsx";
 import React from "react";
-import EmployeeList from "../../components/EmployeeManagement/EmployeeList.jsx";
-import EmployeeStats from "../../components/EmployeeManagement/EmployeeStats.jsx";
+import EmployeeList from "../../components/HRComponents/EmployeeList.jsx";
+import EmployeeStats from "../../components/HRComponents/EmployeeStats.jsx";
 
 const EmployeeManagement = () => {
   return (

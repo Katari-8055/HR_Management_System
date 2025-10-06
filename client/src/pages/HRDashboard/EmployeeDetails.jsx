@@ -1,5 +1,5 @@
 import React from 'react'
-import EmployeeProfile from '../../components/EmployeeManagement/EmployeeProfile';
+import EmployeeProfile from '../../components/HRComponents/EmployeeProfile.jsx';
 import Sidebar from '../../components/UI/Sidebar.jsx'
 
 const EmployeeDetails = () => {

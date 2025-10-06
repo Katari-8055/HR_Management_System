@@ -27,7 +27,7 @@ const AddEmployeeForm = ({ onClose }) => {
     console.log("Employee Data:", formData);
 
     try {
-      const res = await axios.post("http://localhost:3000/api/employee/addEmployee", formData, { withCredentials: true });
+      const res = await axios.post("http://localhost:3000/api/hr/addEmployee", formData, { withCredentials: true });
       console.log("Server Response:", res.data);
       setLoading(false);
       onClose();

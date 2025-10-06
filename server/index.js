@@ -3,10 +3,9 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import router1 from "./routes/routeHR/authRoute.js";
-import router2 from "./routes/OtherHrRoute/HrRoute.js";
-import router3 from "./routes/EmployeeRoutes/employeeRoute.js";
-import router4 from "./routes/HrDashboardRoute/HrDashboardRoute.js";
+import router1 from "./routes/HrRoutes/HrRoute.js";
+import router2 from "./routes/EmployeeRoutes/EmployeeRoute.js";
+
 
 // Initialize dotenv 
 dotenv.config();
@@ -32,10 +31,8 @@ app.get("/", (req, res) => {
 
 
 
-app.use("/api/auth", router1);
-app.use("/api/employee", router2)
-app.use("/api/employee",router3)
-app.use("/api/hr",router4)
+app.use("/api/hr", router1);
+app.use("/api/employee",router2)
 
 
 

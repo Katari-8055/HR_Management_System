@@ -28,7 +28,7 @@ const SignUp = () => {
     try {
       setLoading(true); // show loader
       const res = await axios.post(
-        "http://localhost:3000/api/auth/hrSignup",
+        "http://localhost:3000/api/hr/hrSignup",
         formData,
         { withCredentials: true }
       );

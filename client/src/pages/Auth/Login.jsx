@@ -25,7 +25,7 @@ const Login = () => {
       // ✅ Role ke hisaab se endpoint choose
       const endpoint =
         formData.role === "hr"
-          ? "http://localhost:3000/api/auth/loginHr"
+          ? "http://localhost:3000/api/hr/loginHr"
           : "http://localhost:3000/api/employee/loginEmployee";
 
       const res = await axios.post(endpoint, formData, {
