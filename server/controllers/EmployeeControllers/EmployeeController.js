@@ -7,11 +7,11 @@ export const setPassword = async (req, res) => {
     const { token, password } = req.body;
 
     try {
-        // 1. Check token and expiry
+        
         const employee = await prisma.employee.findFirst({
             where: {
                 setupToken: token,
-                setupTokenExpiry: { gt: new Date() }, // token must not be expired
+                setupTokenExpiry: { gt: new Date() }, 
             },
         });
 
@@ -22,10 +22,10 @@ export const setPassword = async (req, res) => {
             });
         }
 
-        // 2. Hash new password
+       
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // 3. Save password and clear setup token
+ 
         await prisma.employee.update({
             where: { id: employee.id },
             data: {
@@ -75,7 +75,7 @@ export const loginEmployee = async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            maxAge: 24 * 60 * 60 * 1000, 
         });
 
         res.json({ success: true, message: "Login successful", 

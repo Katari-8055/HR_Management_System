@@ -39,7 +39,7 @@ export const addEmployee = async (req, res) => {
         });
 
         // Create link
-        const link = `https://yourapp.com/set-password?token=${token}`;
+        const link = `http://localhost:5173/api/employee/setpassword?token=${token}`;
 
         // Send email with link
         await sendEmail(
