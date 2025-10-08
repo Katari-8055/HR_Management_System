@@ -1,9 +1,19 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const SetPassword = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const { search } = useLocation(); 
+  const queryParams = new URLSearchParams(search);
+  const token = queryParams.get("token");   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,8 +21,10 @@ const SetPassword = () => {
     setError("");
 
     try {
-      // yaha aap apna API call karoge
+      const res = await axios.post("http://localhost:3000/api/employee/passwordSetup", { password, token },{withCredentials:true})
+      console.log("Response:", res.data);
       console.log("New Password:", password);
+      navigate("/login")
     } catch (err) {
       setError("Failed to set password!");
     } finally {

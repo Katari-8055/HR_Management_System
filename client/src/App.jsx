@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/hr/leavemanagement" element={<LeaveManagement/>}/>
 
         {/* EMP Routes */}
-        <Route path="/setpassword/:token" element={<Setpassword/>}/>
+        <Route path="/api/employee/setpassword" element={<Setpassword/>}/>
 
       </Routes>
     </Router>
