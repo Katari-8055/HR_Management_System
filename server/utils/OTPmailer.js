@@ -1,22 +1,28 @@
-import sgMail from "@sendgrid/mail";
+// utils/OTPmailer.js
+import nodemailer from "nodemailer";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// transporter banao (SMTP/Gmail ke liye)
+const transporter = nodemailer.createTransport({
+  service: "gmail", 
+  auth: {
+    user: process.env.EMAIL_USER,      
+    pass: process.env.EMAIL_PASSWORD, 
+  },
+});
 
 export const sendEmail = async (to, subject, text) => {
-  const msg = {
+  const mailOptions = {
+    from: process.env.EMAIL_USER, 
     to,
-    from: process.env.SENDGRID_SENDER, // must be a verified sender
     subject,
     text,
   };
 
-  // console.log("📧 Sending Email:", msg);
-
   try {
-    await sgMail.send(msg);
-    // console.log("✅ Email sent successfully");
+    await transporter.sendMail(mailOptions);
+    console.log("✅ Email sent successfully");
   } catch (error) {
-    console.error("❌ SendGrid Error:", error.response?.body || error);
+    console.error("❌ Nodemailer Error:", error);
     throw error;
   }
 };

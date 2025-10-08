@@ -31,22 +31,23 @@ export const signupHR = async (req, res) => {
                 name,
                 email,
                 password: hashedPassword,
-                role: "HR",  
+                role: "HR",
             },
         });
 
         //generate OTP
         const otp = Math.floor(100000 + Math.random() * 900000);
-        
-         // store OTP in Redis with 10 min expiry
+
+        // store OTP in Redis with 10 min expiry
         await redis.set(`otp:${newHR.id}`, String(otp), { ex: 600 });
 
-        
+
         await sendEmail(
             newHR.email,
             "Welcome to HR Management System",
             `Hello ${newHR.name},\n\nYour account has been successfully created. Your OTP is: ${otp}\n\nThank you!`
         );
+
 
         // Create JWT
         const token = jwt.sign(
@@ -73,7 +74,7 @@ export const signupHR = async (req, res) => {
             },
         });
 
-        
+
 
     } catch (error) {
         console.error("Signup Error:", error);
@@ -98,19 +99,19 @@ export const verifyOtp = async (req, res) => {
         if (!storedOtp) {
             return res.json({ success: false, message: "OTP expired or not found" });
         }
-        
+
         // compare OTPs
         if (Number(storedOtp) !== Number(otp)) {
             return res.json({ success: false, message: "Invalid OTP" });
         }
-        
-        
+
+
         await redis.del(`otp:${hrId}`);
 
-       
+
         await prisma.hR.update({
             where: { id: Number(hrId) },
-            data: { isVerified: true },  
+            data: { isVerified: true },
         });
 
         return res.json({ success: true, message: "OTP verified successfully" });
@@ -148,18 +149,19 @@ export const loginHR = async (req, res) => {
             { expiresIn: "1d" }
         );
 
-         res.cookie("token", token, {
+        res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 24 * 60 * 60 * 1000, // 1 day
         });
 
-        res.json({ success: true, message: "Login successful", 
+        res.json({
+            success: true, message: "Login successful",
             user: {
-            id: hr.id,
-            name: hr.name,
-            email: hr.email,
-            role: hr.role,
+                id: hr.id,
+                name: hr.name,
+                email: hr.email,
+                role: hr.role,
             }
         })
     } catch (error) {
@@ -174,8 +176,8 @@ export const loginHR = async (req, res) => {
 
 
 export const logoutHR = (req, res) => {
-  res.clearCookie("token"); // removes the cookie named "token"
-  res.status(200).json({ message: "Logged out successfully" });
+    res.clearCookie("token"); // removes the cookie named "token"
+    res.status(200).json({ message: "Logged out successfully" });
 };
 
 
