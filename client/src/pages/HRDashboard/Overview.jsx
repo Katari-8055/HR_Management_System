@@ -1,12 +1,12 @@
 import React from 'react'
-import Sidebar from '../../components/UI/Sidebar.jsx'
+import HrSidebar from '../../components/UI/HrSidebar.jsx'
 
 const 
 Overview = () => {
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar />
+      {/* HrSidebar */}
+      <HrSidebar />
 
       {/* Main Content */}
       <div className="flex-1 p-6 bg-gray-50">

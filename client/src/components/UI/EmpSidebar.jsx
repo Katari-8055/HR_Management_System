@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
-const Sidebar = () => {
+const EmpSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [name, setname ] = useState("");
@@ -31,20 +31,20 @@ const Sidebar = () => {
     }
   };
 
-  useEffect(() => {
-  const profileHandler = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/api/hr/hrDetails", { withCredentials: true });
-      if (res.status === 200) {
-        setname(res.data.hr.name);
-      }
-    } catch (error) {
-      console.error("Profile Error:", error);
-    }
-  };
+//   useEffect(() => {
+//   const profileHandler = async () => {
+//     try {
+//       const res = await axios.get("http://localhost:3000/api/hr/hrDetails", { withCredentials: true });
+//       if (res.status === 200) {
+//         setname(res.data.hr.name);
+//       }
+//     } catch (error) {
+//       console.error("Profile Error:", error);
+//     }
+//   };
 
-  profileHandler();
-}, []); 
+//   profileHandler();
+// }, []); 
 
   return (
     <aside
@@ -120,4 +120,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default EmpSidebar;

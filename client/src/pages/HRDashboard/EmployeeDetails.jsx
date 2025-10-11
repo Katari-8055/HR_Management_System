@@ -1,12 +1,12 @@
 import React from 'react'
 import EmployeeProfile from '../../components/HRComponents/EmployeeProfile.jsx';
-import Sidebar from '../../components/UI/Sidebar.jsx'
+import HrSidebar from '../../components/UI/HrSidebar.jsx'
 
 const EmployeeDetails = () => {
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
-      <Sidebar />
+      {/* HrSidebar */}
+      <HrSidebar />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col p-6 overflow-y-auto">
