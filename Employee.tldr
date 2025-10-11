@@ -54,9 +54,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 692,
-			"y": 178.40000915527344,
-			"lastActivityTimestamp": 1759742079339,
+			"x": 71.61658465846992,
+			"y": 386.0780568271761,
+			"lastActivityTimestamp": 1760211972273,
 			"meta": {}
 		},
 		{
@@ -134,12 +134,30 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 0,
-			"y": 0,
-			"z": 1,
+			"x": 209.4022193358323,
+			"y": -113.07527383764672,
+			"z": 0.8732512047850329,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"meta": {},
+			"id": "binding:KZH9EBZ37GZ-UzP_v5old",
+			"type": "arrow",
+			"fromId": "shape:KUNP0YNZ2ALy2f7zm2NhE",
+			"toId": "shape:KjqIlfWlLEjbQDnKPmljw",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.016084245880042414,
+					"y": 0.2665724901979214
+				},
+				"snap": "none",
+				"terminal": "end"
+			},
+			"typeName": "binding"
 		},
 		{
 			"x": 232,
@@ -218,15 +236,30 @@
 			"typeName": "shape"
 		},
 		{
+			"meta": {},
+			"id": "binding:6NQ0leg1ZqqXCY9wkr-mP",
+			"type": "arrow",
+			"fromId": "shape:KUNP0YNZ2ALy2f7zm2NhE",
+			"toId": "shape:zQgedagnJbOx1Nn_c5dsO",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.0676138876576633,
+					"y": 0.2517694336121298
+				},
+				"snap": "center",
+				"terminal": "start"
+			},
+			"typeName": "binding"
+		},
+		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:HMNhUbw6uHNnSuuyqr0G4",
-				"shape:HVt4_Mjx4hBk4SL-I6CzL",
-				"shape:A5-1JPSAR2PSl8tLaI9Kk",
-				"shape:lmUsTeMGxvQhK5J4jn_yg"
+				"shape:rvBwUwC_EEipVGH3jwiyd"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:KjqIlfWlLEjbQDnKPmljw",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -350,6 +383,57 @@
 			},
 			"parentId": "page:page",
 			"index": "aA0qZfTV",
+			"typeName": "shape"
+		},
+		{
+			"x": 11.32361922930852,
+			"y": 0,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:zQgedagnJbOx1Nn_c5dsO",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 383.8500061035156,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 0.6264888481823313,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "This Is For Every Get Request "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "In Hrsidebar & EmpSidebar "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "shape:rvBwUwC_EEipVGH3jwiyd",
+			"index": "a2QP84zl",
 			"typeName": "shape"
 		},
 		{
@@ -518,6 +602,20 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -134.15273046163753,
+			"y": 313.99496965476203,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:rvBwUwC_EEipVGH3jwiyd",
+			"type": "group",
+			"parentId": "page:page",
+			"index": "aKGmz74l",
+			"props": {},
+			"typeName": "shape"
+		},
+		{
 			"x": 650.4000244140625,
 			"y": 137.60000610351562,
 			"rotation": 0,
@@ -638,6 +736,50 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -10.892286422385439,
+			"y": 44.59958658462148,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:KUNP0YNZ2ALy2f7zm2NhE",
+			"type": "arrow",
+			"props": {
+				"kind": "arc",
+				"elbowMidPoint": 0.5,
+				"dash": "draw",
+				"size": "m",
+				"fill": "none",
+				"color": "black",
+				"labelColor": "black",
+				"bend": 105.26385237590898,
+				"start": {
+					"x": 38.47554110256007,
+					"y": -34.378633991132915
+				},
+				"end": {
+					"x": 166.27517506143707,
+					"y": 57.71536171848777
+				},
+				"arrowheadStart": "none",
+				"arrowheadEnd": "arrow",
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				},
+				"labelPosition": 0.5,
+				"font": "draw",
+				"scale": 1
+			},
+			"parentId": "shape:rvBwUwC_EEipVGH3jwiyd",
+			"index": "a3IVu68V",
+			"typeName": "shape"
+		},
+		{
 			"meta": {},
 			"id": "page:page",
 			"name": "Page 1",
@@ -654,15 +796,11 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:geo": "rectangle",
-				"tldraw:size": "s",
-				"tldraw:color": "black"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "move",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -672,8 +810,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1296,
-				"h": 608
+				"w": 1211.2000732421875,
+				"h": 443.20001220703125
 			},
 			"insets": [
 				false,
@@ -776,6 +914,141 @@
 			},
 			"parentId": "page:page",
 			"index": "aEliwVIV",
+			"typeName": "shape"
+		},
+		{
+			"x": 156.07000935347057,
+			"y": 80.61827887498163,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:KjqIlfWlLEjbQDnKPmljw",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 971.6124877929688,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 0.5422468442666367,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "heading",
+							"attrs": {
+								"dir": "auto",
+								"level": 3
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "🚀 Best Practice"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "If sidebar should always stay → "
+												},
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"text": "Layout approach"
+												},
+												{
+													"type": "text",
+													"text": "."
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "If multiple components need HR details → "
+												},
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"text": "Context/Redux"
+												},
+												{
+													"type": "text",
+													"text": "."
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "If you only need persistence per session → "
+												},
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"text": "LocalStorage/SessionStorage"
+												},
+												{
+													"type": "text",
+													"text": "."
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "shape:rvBwUwC_EEipVGH3jwiyd",
+			"index": "a1",
 			"typeName": "shape"
 		},
 		{

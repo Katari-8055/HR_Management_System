@@ -12,10 +12,9 @@ const EmpSidebar = () => {
 
 
   const navigationItems = [
-    { label: "Dashboard", path: "/hr/overview", icon: <LayoutDashboard size={20} /> },
-    { label: "Employee Management", path: "/hr/employeemanagement", icon: <Users size={20} /> },
-    { label: "Task Management", path: "/hr/taskmanagement", icon: <CheckSquare size={20} />, badge: 3 },
-    { label: "Leave Management", path: "/hr/leavemanagement", icon: <Calendar size={20} />, badge: 1 },
+    { label: "Dashboard", path: "/emp/overview", icon: <LayoutDashboard size={20} /> },
+    { label: "Task Management", path: "/emp/taskmanagement", icon: <CheckSquare size={20} />, badge: 3 },
+    { label: "Leave Management", path: "/emp/leavemanagement", icon: <Calendar size={20} />, badge: 1 },
   ];
 
   const submitHandler = async (e) => {
