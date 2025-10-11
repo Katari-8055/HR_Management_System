@@ -1,19 +1,26 @@
-import React, { useState } from "react";
-import { LayoutDashboard, Users, CheckSquare, Calendar, User, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  LayoutDashboard,
+  Users,
+  CheckSquare,
+  Calendar,
+  User,
+  LogOut,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 
 const HrSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [name, setname ] = useState("");
+  const [name, setName] = useState("");
   const navigate = useNavigate();
-
 
   const navigationItems = [
     { label: "Dashboard", path: "/hr/overview", icon: <LayoutDashboard size={20} /> },
-    { label: "Employee Management", path: "/hr/employeemanagement", icon: <Users size={20} /> },
+    { label: "Employee Management", path: "/hr/employeemanagement", icon: <Users size={2} /> },
     { label: "Task Management", path: "/hr/taskmanagement", icon: <CheckSquare size={20} />, badge: 3 },
     { label: "Leave Management", path: "/hr/leavemanagement", icon: <Calendar size={20} />, badge: 1 },
   ];
@@ -24,7 +31,7 @@ const HrSidebar = () => {
       const res = await axios.post("http://localhost:3000/api/auth/logoutHr", {}, { withCredentials: true });
       if (res.status === 200) {
         console.log("Logout successful");
-        navigate("/login"); 
+        navigate("/login");
       }
     } catch (error) {
       console.error("Logout Error:", error);
@@ -32,23 +39,24 @@ const HrSidebar = () => {
   };
 
   useEffect(() => {
-  const profileHandler = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/api/hr/hrDetails", { withCredentials: true });
-      if (res.status === 200) {
-        setname(res.data.hr.name);
+    const profileHandler = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/hr/hrDetails", { withCredentials: true });
+        console.log("Loading...");
+        if (res.status === 200) {
+          setName(res.data.hr.name);
+        }
+      } catch (error) {
+        console.error("Profile Error:", error);
       }
-    } catch (error) {
-      console.error("Profile Error:", error);
-    }
-  };
+    };
 
-  profileHandler();
-}, []); 
+    profileHandler();
+  }, []);
 
   return (
     <aside
-      className={` h-screen bg-white border-r shadow-sm transition-all duration-300 
+      className={`h-screen bg-white border-r shadow-sm transition-all duration-300 
         ${collapsed ? "w-16" : "w-64"}`}
     >
       {/* Header */}
@@ -76,10 +84,16 @@ const HrSidebar = () => {
 
         {profileOpen && (
           <div className="mt-2 bg-white border rounded shadow-md">
-            <a href="/profile" className="block px-4 py-2 text-sm hover:bg-gray-100">
+            <NavLink
+              to="/profile"
+              className="block px-4 py-2 text-sm hover:bg-gray-100"
+            >
               Profile
-            </a>
-            <button onClick={submitHandler} className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 cursor-pointer">
+            </NavLink>
+            <button
+              onClick={submitHandler}
+              className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 cursor-pointer"
+            >
               <LogOut size={16} />
               <span>Logout</span>
             </button>
@@ -90,12 +104,16 @@ const HrSidebar = () => {
       {/* Navigation */}
       <nav className="p-4 space-y-2">
         {navigationItems.map((item) => (
-          <a
+          <NavLink
             key={item.path}
-            href={item.path}
-            className={`flex items-center p-2 rounded-md hover:bg-gray-100 relative ${
-              collapsed ? "justify-center" : "space-x-3"
-            }`}
+            to={item.path}
+            className={({ isActive }) =>
+              `flex items-center p-2 rounded-md relative cursor-pointer ${
+                collapsed ? "justify-center" : "space-x-3"
+              } hover:bg-gray-100 ${
+                isActive ? "bg-gray-200 font-semibold" : ""
+              }`
+            }
           >
             {item.icon}
             {!collapsed && <span>{item.label}</span>}
@@ -108,7 +126,7 @@ const HrSidebar = () => {
                 {item.badge}
               </span>
             )}
-          </a>
+          </NavLink>
         ))}
       </nav>
 

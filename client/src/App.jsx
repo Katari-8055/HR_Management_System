@@ -5,7 +5,7 @@ import Login from "./pages/Auth/Login";
 import SignUp from "./pages/Auth/SignUp";
 import VerifyAccount from "./pages/Auth/VerifyHrAccount";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
-import HrSidebar from "./components/UI/HrSidebar";
+
 import Overview from "./pages/HRDashboard/Overview";
 import TaskManagement from "./pages/HRDashboard/TaskManagement";
 import EmployeeManagemnet from "./pages/HRDashboard/EmployeeManagemnet";
@@ -16,6 +16,7 @@ import EmpSidebar from "./components/UI/EmpSidebar";
 import EmpOverview from "./pages/EMPDashboard/EmpOverview";
 import EmpTaskManagement from "./pages/EMPDashboard/EmpTaskManagement";
 import EmpLeaveManagement from "./pages/EMPDashboard/EmpLeaveManagement";
+import HrLayout from "./layouts/HrLayout";
 
 
 
@@ -29,13 +30,14 @@ const App = () => {
         <Route path="/verify" element={<VerifyAccount />} />
         <Route path="/employeedashboard" element={<EmployeeDashboard/>}/>
 
-        {/* Hr Routes */}
-        <Route path="/hr" element={<HrSidebar/>}/>
-        <Route path="/hr/overview" element={<Overview/>}/>
-        <Route path="/hr/taskmanagement" element={<TaskManagement/>}/>
-        <Route path="/hr/employeemanagement" element={<EmployeeManagemnet/>}/>
-        <Route path="/hr/employeemanagement/:id" element={<EmployeeDetails/>}/>
-        <Route path="/hr/leavemanagement" element={<LeaveManagement/>}/>
+        {/* HR Routes with Layout */}
+        <Route path="/hr" element={<HrLayout />}>
+          <Route path="overview" element={<Overview />} />
+          <Route path="taskmanagement" element={<TaskManagement />} />
+          <Route path="employeemanagement" element={<EmployeeManagemnet />} />
+          <Route path="employeemanagement/:id" element={<EmployeeDetails />} />
+          <Route path="leavemanagement" element={<LeaveManagement />} />
+        </Route>
 
         {/* EMP Routes */}
         <Route path="/emp" element={<EmpSidebar/>}/>
