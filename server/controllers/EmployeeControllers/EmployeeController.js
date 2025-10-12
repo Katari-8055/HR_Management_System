@@ -100,8 +100,21 @@ export const loginOutEmployee = async (req, res) => {
 }
 
 
+//-------------------------------------------------get Employee Details----------------------------------------------------//
 
 
+export const getEmployeeDetails = async (req, res) => {
+    const employeeId = req.employee.id;
+    try {
+        const employee = await prisma.employee.findUnique({where: { id: employeeId }});
+        if (!employee) {
+            return res.status(404).json({ success: false, message: "Employee not found" });
+        }
+        return res.json({ success: true, employee });
+    } catch (error) {
+        console.error("Error fetching employee details:", error);
+    }
+}
 
 //-------------------------------------------------------------Adding More Employee Details--------------------------------------------------//
 

@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import { LayoutDashboard, Users, CheckSquare, Calendar, User, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { LayoutDashboard, CheckSquare, Calendar, User, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 
 const EmpSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [name, setname ] = useState("");
+  const [name, setname] = useState("");
   const navigate = useNavigate();
-
 
   const navigationItems = [
     { label: "Dashboard", path: "/emp/overview", icon: <LayoutDashboard size={20} /> },
@@ -20,34 +18,34 @@ const EmpSidebar = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/logoutEmp", {}, { withCredentials: true });
+      const res = await axios.post("http://localhost:3000/api/employee/logoutEmp", {}, { withCredentials: true });
       if (res.status === 200) {
         console.log("Logout successful");
-        navigate("/login"); 
+        navigate("/login");
       }
     } catch (error) {
       console.error("Logout Error:", error);
     }
   };
 
-//   useEffect(() => {
-//   const profileHandler = async () => {
-//     try {
-//       const res = await axios.get("http://localhost:3000/api/hr/hrDetails", { withCredentials: true });
-//       if (res.status === 200) {
-//         setname(res.data.hr.name);
-//       }
-//     } catch (error) {
-//       console.error("Profile Error:", error);
-//     }
-//   };
+  useEffect(() => {
+    const profileHandler = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/employee/empDetails", { withCredentials: true });
+        if (res.status === 200) {
+          setname(res.data.employee.firstName);
+        }
+      } catch (error) {
+        console.error("Profile Error:", error);
+      }
+    };
 
-//   profileHandler();
-// }, []); 
+    profileHandler();
+  }, []);
 
   return (
     <aside
-      className={` h-screen bg-white border-r shadow-sm transition-all duration-300 
+      className={`h-screen bg-white border-r shadow-sm transition-all duration-300 
         ${collapsed ? "w-16" : "w-64"}`}
     >
       {/* Header */}
@@ -75,10 +73,16 @@ const EmpSidebar = () => {
 
         {profileOpen && (
           <div className="mt-2 bg-white border rounded shadow-md">
-            <a href="/profile" className="block px-4 py-2 text-sm hover:bg-gray-100">
+            <NavLink
+              to="/profile"
+              className="block px-4 py-2 text-sm hover:bg-gray-100"
+            >
               Profile
-            </a>
-            <button onClick={submitHandler} className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 cursor-pointer">
+            </NavLink>
+            <button
+              onClick={submitHandler}
+              className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 cursor-pointer"
+            >
               <LogOut size={16} />
               <span>Logout</span>
             </button>
@@ -89,12 +93,14 @@ const EmpSidebar = () => {
       {/* Navigation */}
       <nav className="p-4 space-y-2">
         {navigationItems.map((item) => (
-          <a
+          <NavLink
             key={item.path}
-            href={item.path}
-            className={`flex items-center p-2 rounded-md hover:bg-gray-100 relative ${
-              collapsed ? "justify-center" : "space-x-3"
-            }`}
+            to={item.path}
+            className={({ isActive }) =>
+              `flex items-center p-2 rounded-md hover:bg-gray-100 relative ${
+                collapsed ? "justify-center" : "space-x-3"
+              } ${isActive ? "bg-gray-200 font-medium" : ""}`
+            }
           >
             {item.icon}
             {!collapsed && <span>{item.label}</span>}
@@ -107,7 +113,7 @@ const EmpSidebar = () => {
                 {item.badge}
               </span>
             )}
-          </a>
+          </NavLink>
         ))}
       </nav>
 
