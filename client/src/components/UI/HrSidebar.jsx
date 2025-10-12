@@ -28,7 +28,8 @@ const HrSidebar = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/logoutHr", {}, { withCredentials: true });
+      const res = await axios.post("http://localhost:3000/api/hr/logoutHr", {}, { withCredentials: true });
+      console.log(res);
       if (res.status === 200) {
         console.log("Logout successful");
         navigate("/login");

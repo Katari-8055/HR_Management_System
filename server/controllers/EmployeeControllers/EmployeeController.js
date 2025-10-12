@@ -92,6 +92,16 @@ export const loginEmployee = async (req, res) => {
     }
 }
 
+//-------------------------------------------------Logout----------------------------------------------------//
+
+export const loginOutEmployee = async (req, res) => {
+    res.clearCookie("token");
+    res.status(200).json({ message: "Logged out successfully" });
+}
+
+
+
+
 
 //-------------------------------------------------------------Adding More Employee Details--------------------------------------------------//
 

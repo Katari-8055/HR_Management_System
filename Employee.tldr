@@ -54,10 +54,25 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 71.61658465846992,
-			"y": 386.0780568271761,
-			"lastActivityTimestamp": 1760211972273,
+			"x": -165.4438018798828,
+			"y": -11.999992370605469,
+			"lastActivityTimestamp": 1760285341679,
 			"meta": {}
+		},
+		{
+			"editingShapeId": null,
+			"croppingShapeId": null,
+			"selectedShapeIds": [
+				"shape:qqFeUlJcv3TORiM_QI9UU"
+			],
+			"hoveredShapeId": "shape:qqFeUlJcv3TORiM_QI9UU",
+			"erasingShapeIds": [],
+			"hintingShapeIds": [],
+			"focusedGroupId": null,
+			"meta": {},
+			"id": "instance_page_state:page:X9VzuJWJiUuVKO1bi_ATw",
+			"pageId": "page:X9VzuJWJiUuVKO1bi_ATw",
+			"typeName": "instance_page_state"
 		},
 		{
 			"x": 232,
@@ -134,9 +149,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 209.4022193358323,
-			"y": -113.07527383764672,
-			"z": 0.8732512047850329,
+			"x": 347.4013446590652,
+			"y": 250.1909928910137,
+			"z": 0.4367404244133456,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -254,12 +269,18 @@
 			"typeName": "binding"
 		},
 		{
+			"x": 385.2438049316406,
+			"y": 124.79999542236328,
+			"z": 1,
+			"meta": {},
+			"id": "camera:page:X9VzuJWJiUuVKO1bi_ATw",
+			"typeName": "camera"
+		},
+		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:rvBwUwC_EEipVGH3jwiyd"
-			],
-			"hoveredShapeId": "shape:KjqIlfWlLEjbQDnKPmljw",
+			"selectedShapeIds": [],
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -565,6 +586,13 @@
 			"typeName": "shape"
 		},
 		{
+			"meta": {},
+			"id": "page:X9VzuJWJiUuVKO1bi_ATw",
+			"name": "Learning ",
+			"index": "a2vQoJwV",
+			"typeName": "page"
+		},
+		{
 			"x": 281.6000671386719,
 			"y": 212.8000030517578,
 			"rotation": 0,
@@ -736,6 +764,58 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -248.6000518798828,
+			"y": -35.39999008178711,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:qqFeUlJcv3TORiM_QI9UU",
+			"type": "text",
+			"props": {
+				"color": "blue",
+				"size": "m",
+				"w": 287.1125183105469,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"start": 1
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "Outlet In React ->"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:X9VzuJWJiUuVKO1bi_ATw",
+			"index": "a11PDMtV",
+			"typeName": "shape"
+		},
+		{
 			"x": -10.892286422385439,
 			"y": 44.59958658462148,
 			"rotation": 0,
@@ -782,7 +862,7 @@
 		{
 			"meta": {},
 			"id": "page:page",
-			"name": "Page 1",
+			"name": "Employee",
 			"index": "a1",
 			"typeName": "page"
 		},
@@ -835,7 +915,7 @@
 			"meta": {},
 			"duplicateProps": null,
 			"id": "instance:instance",
-			"currentPageId": "page:page",
+			"currentPageId": "page:X9VzuJWJiUuVKO1bi_ATw",
 			"typeName": "instance"
 		},
 		{
