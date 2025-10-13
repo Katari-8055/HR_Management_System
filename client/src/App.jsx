@@ -19,6 +19,7 @@ import EmpLeaveManagement from "./pages/EMPDashboard/EmpLeaveManagement";
 import HrLayout from "./layouts/HrLayout";
 import EmpLayout from "./layouts/EmpLayout";
 import EmpDetailedForm from "./components/EMPComponents/EmpDetailedForm";
+import EmpProfile from "./pages/EMPDashboard/EmpProfile";
 
 
 
@@ -43,10 +44,10 @@ const App = () => {
 
         {/* EMP Routes with Layout */}
         <Route path="/emp" element={<EmpLayout />}>
-        
           <Route path="overview" element={<EmpOverview />} />
           <Route path="taskmanagement" element={<EmpTaskManagement />} />
           <Route path="leavemanagement" element={<EmpLeaveManagement />} />
+          <Route path="profile" element={<EmpProfile/>} />
         </Route>
 
         {/* Non-layout API route */}

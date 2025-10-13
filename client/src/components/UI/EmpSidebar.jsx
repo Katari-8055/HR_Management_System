@@ -74,7 +74,7 @@ const EmpSidebar = () => {
         {profileOpen && (
           <div className="mt-2 bg-white border rounded shadow-md">
             <NavLink
-              to="/profile"
+              to="/emp/profile"
               className="block px-4 py-2 text-sm hover:bg-gray-100"
             >
               Profile

@@ -54,18 +54,16 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -165.4438018798828,
-			"y": -11.999992370605469,
-			"lastActivityTimestamp": 1760285341679,
+			"x": 1672.104867033503,
+			"y": 544.7892580747857,
+			"lastActivityTimestamp": 1760376835551,
 			"meta": {}
 		},
 		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:qqFeUlJcv3TORiM_QI9UU"
-			],
-			"hoveredShapeId": "shape:qqFeUlJcv3TORiM_QI9UU",
+			"selectedShapeIds": [],
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -269,17 +267,82 @@
 			"typeName": "binding"
 		},
 		{
-			"x": 385.2438049316406,
-			"y": 124.79999542236328,
+			"x": 764.2438049316406,
+			"y": 251.99999237060547,
 			"z": 1,
 			"meta": {},
 			"id": "camera:page:X9VzuJWJiUuVKO1bi_ATw",
 			"typeName": "camera"
 		},
 		{
+			"x": -122.09583384852135,
+			"y": 517.5987752665528,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:z_hmiG6RakuefeCRkBv6f",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 692.7125244140625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "I have to add image in EmpDetailedForm.jsx and "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "EmployeeControler.js file and making  a get method for"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "image in EmpSidebar"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aLmpS6yV",
+			"typeName": "shape"
+		},
+		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [],
+			"selectedShapeIds": [
+				"shape:z_hmiG6RakuefeCRkBv6f"
+			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -890,8 +953,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1211.2000732421875,
-				"h": 443.20001220703125
+				"w": 1318.4000244140625,
+				"h": 465.6000061035156
 			},
 			"insets": [
 				false,
@@ -915,7 +978,7 @@
 			"meta": {},
 			"duplicateProps": null,
 			"id": "instance:instance",
-			"currentPageId": "page:X9VzuJWJiUuVKO1bi_ATw",
+			"currentPageId": "page:page",
 			"typeName": "instance"
 		},
 		{

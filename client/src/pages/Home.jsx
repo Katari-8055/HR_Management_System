@@ -9,17 +9,17 @@ const Home = () => {
   const navigate = useNavigate();
 
 
-  useEffect(() => {
-    const checkAuth = async () => {
-     const res = await axios.get("http://localhost:3000/api/hr/hrDetails", { withCredentials: true });
-      if (res.status == 200) {
-        navigate("/hr/overview");
-      }else{
-        navigate("/");
-      }
-    }
-    checkAuth();
-  }, []);
+  // useEffect(() => {
+  //   const checkAuth = async () => {
+  //    const res = await axios.get("http://localhost:3000/api/hr/hrDetails", { withCredentials: true });
+  //     if (res.status == 200) {
+  //       navigate("/hr/overview");
+  //     }else{
+  //       navigate("/");
+  //     }
+  //   }
+  //   checkAuth();
+  // }, []);
 
 
 
