@@ -119,7 +119,7 @@ export const getEmployeeDetails = async (req, res) => {
 //-------------------------------------------------------------Adding More Employee Details--------------------------------------------------//
 
 export const addEmployeeDetails = async (req, res) => {
-    const{ phone,  dateOfBirth ,gender, position, street, city, state , zip, country, accountNo, ifsc, bankName,emergencyName,
+    const{ phone,  dateOfBirth ,gender, street, city, state , zip, country, accountNo, ifsc, bankName,emergencyName,
         emergencyRelation,emergencyPhone,pan,aadhaar,passport
     } = req.body;
 
@@ -129,7 +129,7 @@ export const addEmployeeDetails = async (req, res) => {
             where: { id: employeeId },
             data: {
                 phone,
-                dateOfBirth: new Date(dateOfBirth), gender, position, street, city, state, zip, country, accountNo, ifsc,bankName,
+                dateOfBirth: new Date(dateOfBirth), gender, street, city, state, zip, country, accountNo, ifsc,bankName,
                 emergencyName,  emergencyRelation,  emergencyPhone, pan, aadhaar, passport }
         });
 

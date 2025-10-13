@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const EmpDetailedForm = () => {
   const [step, setStep] = useState(1);
@@ -28,6 +30,8 @@ const EmpDetailedForm = () => {
     teamId: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -37,10 +41,20 @@ const EmpDetailedForm = () => {
   const nextStep = () => step < totalSteps && setStep(step + 1);
   const prevStep = () => step > 1 && setStep(step - 1);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    alert("✅ Employee Created!");
+    try {
+      const res = await axios.post("http://localhost:3000/api/employee/addEmployeeDetails", formData, {
+        withCredentials: true,
+      })
+      if(res.data.success){
+        console.log("Employee details added successfully");
+        navigate("/emp")
+      }
+    } catch (error) {
+      console.error("Submission Error:", error);     
+    }
   };
 
   const inputClass =
