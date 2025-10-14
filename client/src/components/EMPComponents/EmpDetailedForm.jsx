@@ -9,6 +9,7 @@ const EmpDetailedForm = () => {
 
   const [formData, setFormData] = useState({
     phone: "",
+    image: "",
     dateOfBirth: "",
     gender: "OTHER",
     profilePicture: null, // New field
@@ -44,18 +45,45 @@ const EmpDetailedForm = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    try {
-      const res = await axios.post("http://localhost:3000/api/employee/addEmployeeDetails", formData, {
-        withCredentials: true,
-      })
-      if(res.data.success){
-        console.log("Employee details added successfully");
-        navigate("/emp")
-      }
-    } catch (error) {
-      console.error("Submission Error:", error);     
+   try {
+    let imageUrl = formData.image;
+
+    // ✅ If profile picture selected, upload to Cloudinary
+    if (formData.profilePicture) {
+      const data = new FormData();
+      data.append("image", formData.profilePicture);
+
+     const uploadRes = await axios.post(
+  "http://localhost:3000/api/employee/upload",
+  data,
+  {
+    headers: { "Content-Type": "multipart/form-data" },
+    withCredentials: true, // must be inside the same config object
+  }
+);
+
+
+      imageUrl = uploadRes.data.url;
     }
-  };
+
+    // ✅ Update formData with Cloudinary URL
+    const payload = { ...formData, image: imageUrl };
+
+    // ✅ Send final data to backend
+    const res = await axios.post(
+      "http://localhost:3000/api/employee/addEmployeeDetails",
+      payload,
+      { withCredentials: true }
+    );
+
+    if (res.data.success) {
+      console.log("✅ Employee details added successfully");
+      navigate("/emp");
+    }
+  } catch (error) {
+    console.error("❌ Error submitting form:", error);
+  }
+};
 
   const inputClass =
     "border border-gray-300 rounded-lg p-2 w-full focus:ring-2 focus:ring-blue-400 outline-none";

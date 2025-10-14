@@ -42,6 +42,7 @@ model Employee {
   lastName          String?
   email             String     @unique
   phone             String?
+  image             String?
   dateOfBirth       DateTime?
   gender            Gender?    @default(OTHER)
   position          String?
