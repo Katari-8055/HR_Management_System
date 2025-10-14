@@ -8,6 +8,7 @@ const EmpDetailedForm = () => {
   const totalSteps = 5; // Adjusted total steps after removing Step 3 and 7
 
   const [formData, setFormData] = useState({
+    email: "",
     phone: "",
     image: "",
     dateOfBirth: "",
@@ -48,7 +49,7 @@ const EmpDetailedForm = () => {
    try {
     let imageUrl = formData.image;
 
-    // ✅ If profile picture selected, upload to Cloudinary
+    
     if (formData.profilePicture) {
       const data = new FormData();
       data.append("image", formData.profilePicture);
@@ -58,7 +59,7 @@ const EmpDetailedForm = () => {
   data,
   {
     headers: { "Content-Type": "multipart/form-data" },
-    withCredentials: true, // must be inside the same config object
+    withCredentials: true, 
   }
 );
 
@@ -66,10 +67,9 @@ const EmpDetailedForm = () => {
       imageUrl = uploadRes.data.url;
     }
 
-    // ✅ Update formData with Cloudinary URL
     const payload = { ...formData, image: imageUrl };
 
-    // ✅ Send final data to backend
+    
     const res = await axios.post(
       "http://localhost:3000/api/employee/addEmployeeDetails",
       payload,
@@ -78,7 +78,7 @@ const EmpDetailedForm = () => {
 
     if (res.data.success) {
       console.log("✅ Employee details added successfully");
-      navigate("/emp");
+      navigate("/login");
     }
   } catch (error) {
     console.error("❌ Error submitting form:", error);
@@ -132,6 +132,13 @@ const EmpDetailedForm = () => {
 
                   {/* Other inputs: Phone, DOB, Gender */}
                   <div className="grid grid-cols-1 gap-4 flex-1">
+                    <input
+                      name="email"
+                      placeholder="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={inputClass}
+                    />
                     <input
                       name="phone"
                       placeholder="Phone"

@@ -133,23 +133,53 @@ export const uploadProfileImage = async (req, res) => {
 //-------------------------------------------------------------Adding More Employee Details--------------------------------------------------//
 
 export const addEmployeeDetails = async (req, res) => {
-    const{ phone, image, dateOfBirth ,gender, street, city, state , zip, country, accountNo, ifsc, bankName,emergencyName,
-        emergencyRelation,emergencyPhone,pan,aadhaar,passport
+    const { phone, email, image, dateOfBirth, gender, street, city, state, zip, country,
+        accountNo, ifsc, bankName, emergencyName, emergencyRelation, emergencyPhone,
+        pan, aadhaar, passport
     } = req.body;
 
     try {
-        const employeeId = req.employee.id;
-        await prisma.employee.update({
-            where: { id: employeeId },
-            data: {
-                phone,
-                dateOfBirth: new Date(dateOfBirth), gender,image, street, city, state, zip, country, accountNo, ifsc,bankName,
-                emergencyName,  emergencyRelation,  emergencyPhone, pan, aadhaar, passport }
+        if (!email) {
+            return res.status(400).json({ success: false, message: "Email is required" });
+        }
+
+        // Check if employee exists with the given email
+        const existingEmployee = await prisma.employee.findUnique({
+            where: { email },
         });
 
-        res.json({ success: true, message: "Employee details added successfully" });
+        if (!existingEmployee) {
+            return res.status(404).json({ success: false, message: "Employee not found" });
+        }
+
+        // Update the employee data
+        await prisma.employee.update({
+            where: { email },
+            data: {
+                phone,
+                dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : undefined,
+                gender,
+                image,
+                street,
+                city,
+                state,
+                zip,
+                country,
+                accountNo,
+                ifsc,
+                bankName,
+                emergencyName,
+                emergencyRelation,
+                emergencyPhone,
+                pan,
+                aadhaar,
+                passport
+            },
+        });
+
+        res.json({ success: true, message: "Employee details updated successfully" });
     } catch (error) {
-        console.error("Error adding employee details:", error);
+        console.error("Error updating employee details:", error);
         return res.status(500).json({ success: false, message: "Server error" });
     }
-}
+};

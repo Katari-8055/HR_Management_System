@@ -1,8 +1,9 @@
 import React from 'react'
+import EmpHeaderProfile from '../../components/EMPComponents/EmpHeaderProfile'
 
 const EmpProfile = () => {
   return (
-    <div>EmpProfile</div>
+    <div><EmpHeaderProfile/></div>
   )
 }
 

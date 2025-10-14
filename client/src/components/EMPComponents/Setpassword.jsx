@@ -24,7 +24,7 @@ const SetPassword = () => {
       const res = await axios.post("http://localhost:3000/api/employee/passwordSetup", { password, token },{withCredentials:true})
       console.log("Response:", res.data);
       console.log("New Password:", password);
-      navigate("/login")
+      navigate("/emp/detail")
     } catch (err) {
       setError("Failed to set password!");
     } finally {

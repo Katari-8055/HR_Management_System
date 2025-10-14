@@ -1,24 +1,50 @@
 import React, { useState, useEffect } from "react";
-import { LayoutDashboard, CheckSquare, Calendar, User, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  LayoutDashboard,
+  CheckSquare,
+  Calendar,
+  User,
+  LogOut,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const EmpSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [name, setname] = useState("");
+  const [employee, setEmployee] = useState(null);
   const navigate = useNavigate();
 
   const navigationItems = [
-    { label: "Dashboard", path: "/emp/overview", icon: <LayoutDashboard size={20} /> },
-    { label: "Task Management", path: "/emp/taskmanagement", icon: <CheckSquare size={20} />, badge: 3 },
-    { label: "Leave Management", path: "/emp/leavemanagement", icon: <Calendar size={20} />, badge: 1 },
+    {
+      label: "Dashboard",
+      path: "/emp/overview",
+      icon: <LayoutDashboard size={20} />,
+    },
+    {
+      label: "Task Management",
+      path: "/emp/taskmanagement",
+      icon: <CheckSquare size={20} />,
+      badge: 3,
+    },
+    {
+      label: "Leave Management",
+      path: "/emp/leavemanagement",
+      icon: <Calendar size={20} />,
+      badge: 1,
+    },
   ];
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/employee/logoutEmp", {}, { withCredentials: true });
+      const res = await axios.post(
+        "http://localhost:3000/api/employee/logoutEmp",
+        {},
+        { withCredentials: true }
+      );
       if (res.status === 200) {
         console.log("Logout successful");
         navigate("/login");
@@ -31,9 +57,12 @@ const EmpSidebar = () => {
   useEffect(() => {
     const profileHandler = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/employee/empDetails", { withCredentials: true });
+        const res = await axios.get(
+          "http://localhost:3000/api/employee/empDetails",
+          { withCredentials: true }
+        );
         if (res.status === 200) {
-          setname(res.data.employee.firstName);
+          setEmployee(res.data.employee);
         }
       } catch (error) {
         console.error("Profile Error:", error);
@@ -45,11 +74,12 @@ const EmpSidebar = () => {
 
   return (
     <aside
-      className={`h-screen bg-white border-r shadow-sm transition-all duration-300 
-        ${collapsed ? "w-16" : "w-64"}`}
+      className={`h-screen bg-white border-r shadow-sm transition-all duration-300 ${
+        collapsed ? "w-16" : "w-64"
+      }`}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b ">
+      <div className="flex items-center justify-between p-4 border-b">
         {!collapsed && <h1 className="font-bold text-lg">HRConnect Pro</h1>}
         <button
           onClick={() => setCollapsed(!collapsed)}
@@ -60,17 +90,40 @@ const EmpSidebar = () => {
       </div>
 
       {/* Profile */}
-      <div className="p-4 border-b ">
+      <div className="p-4 border-b">
         <button
           onClick={() => setProfileOpen(!profileOpen)}
-          className="flex items-center space-x-3 w-full hover:bg-gray-100 p-2 rounded cursor-pointer"
+          className="flex items-start space-x-3 w-full hover:bg-gray-100 p-2 rounded cursor-pointer"
         >
-          <div className="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center ">
-            <User size={16} color="white" />
+          {/* Profile Image */}
+          <div
+            className={`flex-shrink-0 rounded-full overflow-hidden border-2 border-gray-300 ${
+              collapsed ? "w-10 h-10" : "w-12 h-12"
+            } transition-all duration-300`}
+          >
+            <img
+              src={employee?.image || "/default-avatar.png"}
+              alt={`${employee?.firstName || "User"} ${
+                employee?.lastName || ""
+              }`}
+              className="w-full h-full object-cover"
+            />
           </div>
-          {!collapsed && <span className="text-sm font-medium">{name}</span>}
+
+          {/* Name and email aligned to top */}
+          {!collapsed && (
+            <div className="flex flex-col justify-start items-start">
+              <span className="text-sm font-medium">
+                {employee?.firstName || "Loading..."}
+              </span>
+              <span className="text-xs text-gray-500">
+                {employee?.email || ""}
+              </span>
+            </div>
+          )}
         </button>
 
+        {/* Profile dropdown */}
         {profileOpen && (
           <div className="mt-2 bg-white border rounded shadow-md">
             <NavLink
