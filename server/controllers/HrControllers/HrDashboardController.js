@@ -13,10 +13,22 @@ export const getHRDetails = async (req, res) => {
         if (!hr) {
             return res.status(404).json({ success: false, message: "HR not found" });
         }
-        console.log(hr);
+      
         return res.json({ success: true, hr });
         
     } catch (error) {
         console.error("Error fetching HR details:", error);
+    }
+}
+//------------------------------------------------Get All Employees-------------------------------------------------------------------->
+
+
+export const getAllEmployees = async (req, res) => {
+    try {
+        const employees = await prisma.employee.findMany();
+        return res.json({ success: true, employees });
+    } catch (error) {
+        console.error("Error fetching employees:", error);
+        return res.status(500).json({ success: false, message: "Failed to fetch employees", error: error.message });
     }
 }

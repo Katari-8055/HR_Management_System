@@ -1,5 +1,4 @@
 import React from 'react'
-import HrSidebar from '../../components/UI/HrSidebar.jsx'
 
 const 
 Overview = () => {

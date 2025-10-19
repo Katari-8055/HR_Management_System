@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,108 +7,81 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model HR {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  role       Role     @default(HR)          // Always HR
-  birthday  DateTime?                     // Optional birthday
-  image     String?                        // Profile picture URL
-  phone     String?                        // Phone number
-  address   String?                        // Address
-  isVerified Boolean @default(false)
-  createdAt DateTime @default(now())
+  id         Int       @id @default(autoincrement())
+  name       String
+  email      String    @unique
+  password   String
+  role       Role      @default(HR)
+  createdAt  DateTime  @default(now())
+  address    String?
+  birthday   DateTime?
+  image      String?
+  isVerified Boolean   @default(false)
+  phone      String?
 }
-
-enum Role {
-  HR
-}
-
-
-//---------------------------------------------------------------------------------------->
 
 model Employee {
-  id                String     @id @default(cuid())
-  employeeId        String     @unique
+  id                String           @id @default(cuid())
+  employeeId        String           @unique
   firstName         String
   lastName          String?
-  email             String     @unique
+  email             String           @unique
   phone             String?
-  image             String?
   dateOfBirth       DateTime?
-  gender            Gender?    @default(OTHER)
+  gender            Gender?          @default(OTHER)
   position          String?
-  password          String?
-
-  // Address
   street            String?
   city              String?
   state             String?
   zip               String?
   country           String?
-
-  // Employment Details
   dateOfJoining     DateTime?
   employmentType    EmploymentType   @default(FULL_TIME)
   status            EmploymentStatus @default(ACTIVE)
   salary            Float            @default(50000)
-
-  // Bank Details
   accountNo         String?
   ifsc              String?
   bankName          String?
-
-  // Emergency Contact
   emergencyName     String?
   emergencyRelation String?
   emergencyPhone    String?
-
-  // Govt IDs
-  pan               String? @unique
-  aadhaar           String? @unique
-  passport          String? @unique
-
-  setupToken        String?   // for password setup
-  setupTokenExpiry  DateTime? // expiry time for token
-
-  // Employee Role
-  role              Roles @default(EMPLOYEE)
-
-  // Relations
-  department        Department? @relation(fields: [departmentId], references: [id])
+  pan               String?          @unique
+  aadhaar           String?          @unique
+  passport          String?          @unique
+  role              Roles            @default(EMPLOYEE)
   departmentId      String?
-
-  team              Team?       @relation("TeamMembers", fields: [teamId], references: [id])
   teamId            String?
-
-  managedTeams      Team[]      @relation("TeamManager")
-
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  setupToken        String?
+  setupTokenExpiry  DateTime?
+  password          String?
+  image             String?
+  department        Department?      @relation(fields: [departmentId], references: [id])
+  team              Team?            @relation("TeamMembers", fields: [teamId], references: [id])
+  managedTeams      Team[]           @relation("TeamManager")
 }
 
 model Department {
-  id          String     @id @default(cuid())
-  name        String
-  employees   Employee[]
+  id        String     @id @default(cuid())
+  name      String
+  employees Employee[]
 }
 
 model Team {
   id          String     @id @default(cuid())
   name        String
   description String?
-
-  // Manager (One Employee can manage many Teams)
   managerId   String
-  manager     Employee   @relation("TeamManager", fields: [managerId], references: [id])
-
-  // Members (Many Employees can belong to one Team)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
   members     Employee[] @relation("TeamMembers")
+  manager     Employee   @relation("TeamManager", fields: [managerId], references: [id])
+}
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+enum Role {
+  HR
 }
 
 enum Gender {

@@ -54,9 +54,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 1036.0429521340338,
-			"y": 162.7078138533824,
-			"lastActivityTimestamp": 1760504493165,
+			"x": 687.4000244140625,
+			"y": 156,
+			"lastActivityTimestamp": 1760880120454,
 			"meta": {}
 		},
 		{
@@ -184,12 +184,27 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -637.8326132838014,
-			"y": -29.28470138589789,
-			"z": 1.9426919925151562,
+			"x": 293.7473510415233,
+			"y": 25.872032024207087,
+			"z": 0.654918640786788,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"editingShapeId": null,
+			"croppingShapeId": null,
+			"selectedShapeIds": [
+				"shape:6ED8Imhjj_qTpLXqczF3J"
+			],
+			"hoveredShapeId": null,
+			"erasingShapeIds": [],
+			"hintingShapeIds": [],
+			"focusedGroupId": null,
+			"meta": {},
+			"id": "instance_page_state:page:Zc_pHK2dkTrHWOfXxOBIX",
+			"pageId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"typeName": "instance_page_state"
 		},
 		{
 			"x": 1014.6170828836696,
@@ -343,6 +358,45 @@
 			"typeName": "binding"
 		},
 		{
+			"x": 0,
+			"y": 0,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:TJZFgn0GzpKlxxW3P3YLk",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "s",
+				"w": 246.1999969482422,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Task -> click on HrSidebar"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "shape:abW9QHDsPIWg-tZPQ7KR-",
+			"index": "a1",
+			"typeName": "shape"
+		},
+		{
 			"x": 764.2438049316406,
 			"y": 251.99999237060547,
 			"z": 1,
@@ -416,9 +470,7 @@
 		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:KhfA3i0Q4w0xWCUOKrreY"
-			],
+			"selectedShapeIds": [],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -505,6 +557,14 @@
 			"parentId": "page:page",
 			"index": "aDfn0PnV",
 			"typeName": "shape"
+		},
+		{
+			"x": 0,
+			"y": 0,
+			"z": 1,
+			"meta": {},
+			"id": "camera:page:Zc_pHK2dkTrHWOfXxOBIX",
+			"typeName": "camera"
 		},
 		{
 			"x": 852.1620782627393,
@@ -672,6 +732,81 @@
 			},
 			"parentId": "page:page",
 			"index": "aEzy6ntbZ",
+			"typeName": "shape"
+		},
+		{
+			"x": 0.800018310546875,
+			"y": 24.150015830993652,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:DBbJmBXU8x7r6D13rpgor",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "s",
+				"w": 370.51251220703125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "get data from backend of employee "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "and send everyhwere it's need like"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "HrSidebar, EmployeeStats, employeeList"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "and employeeprofile;"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "shape:abW9QHDsPIWg-tZPQ7KR-",
+			"index": "a230AMqV",
 			"typeName": "shape"
 		},
 		{
@@ -981,6 +1116,52 @@
 			"typeName": "shape"
 		},
 		{
+			"meta": {},
+			"id": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"name": "HR",
+			"index": "a3Cq2kbV",
+			"typeName": "page"
+		},
+		{
+			"x": 218.4000244140625,
+			"y": 179.80002975463867,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:6ED8Imhjj_qTpLXqczF3J",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 382.3125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1.3703703529277682,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "I have to study of UseContext "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a1XRsQ4V",
+			"typeName": "shape"
+		},
+		{
 			"x": 230.4000244140625,
 			"y": 115.049973487854,
 			"rotation": 0,
@@ -1017,6 +1198,20 @@
 			},
 			"parentId": "page:page",
 			"index": "a4ZYheTV",
+			"typeName": "shape"
+		},
+		{
+			"x": 209.20001220703125,
+			"y": 246.24997806549072,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:abW9QHDsPIWg-tZPQ7KR-",
+			"type": "group",
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a3lpCShV",
+			"props": {},
 			"typeName": "shape"
 		},
 		{
@@ -1133,15 +1328,13 @@
 			"followingUserId": null,
 			"opacityForNextShape": 1,
 			"stylesForNextShape": {
-				"tldraw:geo": "rectangle",
-				"tldraw:dash": "solid",
-				"tldraw:fill": "none",
+				"tldraw:color": "black",
 				"tldraw:size": "s"
 			},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "move",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -1152,7 +1345,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1225.5999755859375,
-				"h": 501.6000061035156
+				"h": 511.20001220703125
 			},
 			"insets": [
 				false,
@@ -1176,7 +1369,7 @@
 			"meta": {},
 			"duplicateProps": null,
 			"id": "instance:instance",
-			"currentPageId": "page:page",
+			"currentPageId": "page:Zc_pHK2dkTrHWOfXxOBIX",
 			"typeName": "instance"
 		},
 		{

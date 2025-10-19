@@ -126,6 +126,7 @@ export const verifyOtp = async (req, res) => {
 
 export const loginHR = async (req, res) => {
     const { email, password } = req.body;
+    console.log(email,password)
     try {
 
         if (!email || !password) {

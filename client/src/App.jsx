@@ -20,6 +20,7 @@ import HrLayout from "./layouts/HrLayout";
 import EmpLayout from "./layouts/EmpLayout";
 import EmpDetailedForm from "./components/EMPComponents/EmpDetailedForm";
 import EmpProfile from "./pages/EMPDashboard/EmpProfile";
+import HrProfile from "./pages/HRDashboard/HrProfile";
 
 
 
@@ -35,6 +36,7 @@ const App = () => {
 
         {/* HR Routes with Layout */}
         <Route path="/hr" element={<HrLayout />}>
+          <Route path="profile" element={<HrProfile/>} />
           <Route path="overview" element={<Overview />} />
           <Route path="taskmanagement" element={<TaskManagement />} />
           <Route path="employeemanagement" element={<EmployeeManagemnet />} />
