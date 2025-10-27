@@ -142,7 +142,7 @@
 // export default HrSidebar;
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   LayoutDashboard,
   Users,
@@ -155,12 +155,16 @@ import {
 } from "lucide-react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
+import { EmployeeContext } from "../../context/EmployeeContext";
 
 const HrSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [name, setName] = useState("");
   const navigate = useNavigate();
+
+  const { getAllEmployee } = useContext(EmployeeContext);
+
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -179,6 +183,9 @@ const HrSidebar = () => {
       console.error("Logout Error:", error);
     }
   };
+
+
+
 
   useEffect(() => {
     const profileHandler = async () => {
@@ -259,6 +266,7 @@ const HrSidebar = () => {
 
         <NavLink
           to="/hr/employeemanagement"
+          onClick={getAllEmployee}
           className={({ isActive }) =>
             `flex items-center p-2 rounded-md relative cursor-pointer ${
               collapsed ? "justify-center" : "space-x-3"

@@ -54,10 +54,114 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 687.4000244140625,
-			"y": 156,
-			"lastActivityTimestamp": 1760880120454,
+			"x": 15.205173094648217,
+			"y": 96.40292552368902,
+			"lastActivityTimestamp": 1761592060056,
 			"meta": {}
+		},
+		{
+			"x": 1002.8405751027319,
+			"y": 478.56841925022695,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:oBGo6bTISbi947MjiyM71",
+			"type": "text",
+			"props": {
+				"color": "green",
+				"size": "m",
+				"w": 123.61053057404595,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 0.8439018632754923,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Letter ToDO"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a2zLpxCP",
+			"typeName": "shape"
+		},
+		{
+			"x": 995.0414551973694,
+			"y": 563.70057702158,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:NSwz8ozjjqHlwNYeOUpsB",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 604.0144685279018,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 0.7257717627328982,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"start": 1,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "Geting all things in EmployeeList but i have to add something "
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "      like department and degination etc."
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a3zzW7Fd",
+			"typeName": "shape"
 		},
 		{
 			"editingShapeId": null,
@@ -195,7 +299,7 @@
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:6ED8Imhjj_qTpLXqczF3J"
+				"shape:0Gw9ZeLQxMPkSSiWJBuQ0"
 			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
@@ -205,6 +309,45 @@
 			"id": "instance_page_state:page:Zc_pHK2dkTrHWOfXxOBIX",
 			"pageId": "page:Zc_pHK2dkTrHWOfXxOBIX",
 			"typeName": "instance_page_state"
+		},
+		{
+			"x": 1611.0465361636377,
+			"y": 547.9888619173804,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:9Q73mYRdJeNDq7WkMYkvS",
+			"type": "text",
+			"props": {
+				"color": "blue",
+				"size": "m",
+				"w": 169.53845834820694,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 0.8439018632754923,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Ye bad me karenge"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a2tPGBOV",
+			"typeName": "shape"
 		},
 		{
 			"x": 1014.6170828836696,
@@ -262,6 +405,43 @@
 				"terminal": "end"
 			},
 			"typeName": "binding"
+		},
+		{
+			"x": 962.3824223002882,
+			"y": 101.93317026158903,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:5bmLY3YeIh3zet1f43so6",
+			"type": "geo",
+			"props": {
+				"w": 752.2277935305085,
+				"h": 306.69337504794623,
+				"geo": "rectangle",
+				"dash": "draw",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				}
+			},
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a5bc4STV",
+			"typeName": "shape"
 		},
 		{
 			"x": 232,
@@ -356,45 +536,6 @@
 				"terminal": "start"
 			},
 			"typeName": "binding"
-		},
-		{
-			"x": 0,
-			"y": 0,
-			"rotation": 0,
-			"isLocked": false,
-			"opacity": 1,
-			"meta": {},
-			"id": "shape:TJZFgn0GzpKlxxW3P3YLk",
-			"type": "text",
-			"props": {
-				"color": "black",
-				"size": "s",
-				"w": 246.1999969482422,
-				"font": "draw",
-				"textAlign": "start",
-				"autoSize": true,
-				"scale": 1,
-				"richText": {
-					"type": "doc",
-					"content": [
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "Task -> click on HrSidebar"
-								}
-							]
-						}
-					]
-				}
-			},
-			"parentId": "shape:abW9QHDsPIWg-tZPQ7KR-",
-			"index": "a1",
-			"typeName": "shape"
 		},
 		{
 			"x": 764.2438049316406,
@@ -559,9 +700,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 0,
-			"y": 0,
-			"z": 1,
+			"x": 685.290914375854,
+			"y": 128.84493332521214,
+			"z": 0.6463990683311479,
 			"meta": {},
 			"id": "camera:page:Zc_pHK2dkTrHWOfXxOBIX",
 			"typeName": "camera"
@@ -735,78 +876,77 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 0.800018310546875,
-			"y": 24.150015830993652,
+			"x": 998.0968040779849,
+			"y": 511.1337020520475,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
 			"meta": {},
-			"id": "shape:DBbJmBXU8x7r6D13rpgor",
-			"type": "text",
+			"id": "shape:58OU8iYFMSgEO-Kv0G_TG",
+			"type": "geo",
 			"props": {
-				"color": "black",
-				"size": "s",
-				"w": 370.51251220703125,
-				"font": "draw",
-				"textAlign": "start",
-				"autoSize": true,
+				"w": 951.1638712268254,
+				"h": 384.40281930556796,
+				"geo": "rectangle",
+				"dash": "draw",
+				"growY": 0,
+				"url": "",
 				"scale": 1,
+				"color": "blue",
+				"labelColor": "black",
+				"fill": "none",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
 				"richText": {
 					"type": "doc",
 					"content": [
 						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "get data from backend of employee "
-								}
-							]
-						},
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "and send everyhwere it's need like"
-								}
-							]
-						},
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "HrSidebar, EmployeeStats, employeeList"
-								}
-							]
-						},
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "and employeeprofile;"
-								}
-							]
+							"type": "paragraph"
 						}
 					]
 				}
 			},
-			"parentId": "shape:abW9QHDsPIWg-tZPQ7KR-",
-			"index": "a230AMqV",
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a7ZJK1uV",
+			"typeName": "shape"
+		},
+		{
+			"x": 6.495645013474757,
+			"y": 42.78294083248937,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:OlpzWaUSji7zl4v-8CmcZ",
+			"type": "geo",
+			"props": {
+				"w": 951.1638712268254,
+				"h": 384.40281930556796,
+				"geo": "rectangle",
+				"dash": "draw",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"color": "blue",
+				"labelColor": "black",
+				"fill": "none",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				}
+			},
+			"parentId": "shape:_OYV3L__dqoSjz8Xp4cZ0",
+			"index": "a2hS4aXV",
 			"typeName": "shape"
 		},
 		{
@@ -879,6 +1019,24 @@
 			"parentId": "page:page",
 			"index": "aG3XO9gV",
 			"typeName": "shape"
+		},
+		{
+			"meta": {},
+			"id": "binding:t0GDNEo9ClG4U4KCdmxW5",
+			"type": "arrow",
+			"fromId": "shape:o_cJxKHKsmheS3uiXWu1k",
+			"toId": "shape:NSwz8ozjjqHlwNYeOUpsB",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.9321922818977886,
+					"y": 0.450200735723462
+				},
+				"snap": "none",
+				"terminal": "start"
+			},
+			"typeName": "binding"
 		},
 		{
 			"meta": {},
@@ -1035,6 +1193,20 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -151.79793942367218,
+			"y": 26.036033344193527,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:_OYV3L__dqoSjz8Xp4cZ0",
+			"type": "group",
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a8ICD6PV",
+			"props": {},
+			"typeName": "shape"
+		},
+		{
 			"x": 650.4000244140625,
 			"y": 137.60000610351562,
 			"rotation": 0,
@@ -1123,8 +1295,8 @@
 			"typeName": "page"
 		},
 		{
-			"x": 218.4000244140625,
-			"y": 179.80002975463867,
+			"x": 977.7492335886936,
+			"y": 119.22484194772318,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1134,11 +1306,11 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 382.3125,
+				"w": 93.31193588928312,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
-				"scale": 1.3703703529277682,
+				"scale": 0.6338587422001054,
 				"richText": {
 					"type": "doc",
 					"content": [
@@ -1150,7 +1322,7 @@
 							"content": [
 								{
 									"type": "text",
-									"text": "I have to study of UseContext "
+									"text": "UseContext "
 								}
 							]
 						}
@@ -1198,20 +1370,6 @@
 			},
 			"parentId": "page:page",
 			"index": "a4ZYheTV",
-			"typeName": "shape"
-		},
-		{
-			"x": 209.20001220703125,
-			"y": 246.24997806549072,
-			"rotation": 0,
-			"isLocked": false,
-			"opacity": 1,
-			"meta": {},
-			"id": "shape:abW9QHDsPIWg-tZPQ7KR-",
-			"type": "group",
-			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
-			"index": "a3lpCShV",
-			"props": {},
 			"typeName": "shape"
 		},
 		{
@@ -1327,14 +1485,11 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:color": "black",
-				"tldraw:size": "s"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "default",
+				"type": "move",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -1344,8 +1499,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1225.5999755859375,
-				"h": 511.20001220703125
+				"w": 1318.4000244140625,
+				"h": 468
 			},
 			"insets": [
 				false,
@@ -1586,6 +1741,45 @@
 			"typeName": "shape"
 		},
 		{
+			"x": 956.1657600388608,
+			"y": 68.11902629700043,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:lYinGVXNez8ZszLkeLfEo",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 168.16250610351562,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "What I Learn"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a6NAKc8V",
+			"typeName": "shape"
+		},
+		{
 			"x": -125.29295416333264,
 			"y": 624.5608931013627,
 			"rotation": 0,
@@ -1622,6 +1816,45 @@
 			},
 			"parentId": "page:page",
 			"index": "aM62IFEV",
+			"typeName": "shape"
+		},
+		{
+			"x": -137.18286103808254,
+			"y": 77.74579935998798,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:0Gw9ZeLQxMPkSSiWJBuQ0",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 974.2351302994616,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1.0659176112952995,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Profile Adding For HR & view Profile of Employee"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a9DkFmyV",
 			"typeName": "shape"
 		},
 		{
@@ -1848,6 +2081,45 @@
 			"typeName": "shape"
 		},
 		{
+			"x": 0,
+			"y": 0,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:L4EjScPnnVv6JokACZO3q",
+			"type": "text",
+			"props": {
+				"color": "green",
+				"size": "m",
+				"w": 219.4930734802152,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1.2223361506907289,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Currently Doing..."
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "shape:_OYV3L__dqoSjz8Xp4cZ0",
+			"index": "a1",
+			"typeName": "shape"
+		},
+		{
 			"x": 800.7648790084935,
 			"y": 148.47478730546726,
 			"rotation": 0,
@@ -1965,6 +2237,50 @@
 			},
 			"parentId": "page:page",
 			"index": "a2zIWUzm",
+			"typeName": "shape"
+		},
+		{
+			"x": 1748.5870601849497,
+			"y": 575.4176566320738,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:o_cJxKHKsmheS3uiXWu1k",
+			"type": "arrow",
+			"props": {
+				"kind": "arc",
+				"elbowMidPoint": 0.5,
+				"dash": "draw",
+				"size": "m",
+				"fill": "none",
+				"color": "black",
+				"labelColor": "black",
+				"bend": -37.75210614258418,
+				"start": {
+					"x": -406.8018467742182,
+					"y": 20.073038217803628
+				},
+				"end": {
+					"x": -73.47679036862019,
+					"y": -37.065587676362156
+				},
+				"arrowheadStart": "none",
+				"arrowheadEnd": "arrow",
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				},
+				"labelPosition": 0.5,
+				"font": "draw",
+				"scale": 1
+			},
+			"parentId": "page:Zc_pHK2dkTrHWOfXxOBIX",
+			"index": "a4nmOxMV",
 			"typeName": "shape"
 		}
 	]

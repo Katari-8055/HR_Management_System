@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { employees } from "../../assets/Data";
 import { Eye, Edit, MoreVertical } from "lucide-react";
 import { Link } from "react-router-dom";
+import { EmployeeContext } from "../../context/EmployeeContext";
 
 const EmployeeList = () => {
+
+  const { employees } = useContext(EmployeeContext);
+
+  console.log(employees);
+
   return (
     <div className="p-6">
       <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -29,27 +35,28 @@ const EmployeeList = () => {
                 {/* Employee Info */}
                 <td className="py-3 px-4 flex items-center gap-3">
                   <img
-                    src={emp.avatar}
+                    src={emp.image}
                     alt={emp.name}
-                    className="w-10 h-10 rounded-full border border-gray-200"
+                    className="w-10 h-10 rounded-full border border-gray-200 object-cover"
                   />
                   <div>
-                    <p className="font-medium text-gray-800">{emp.name}</p>
+                    <p className="font-medium text-gray-800">{emp.firstName}</p>
                     <p className="text-xs text-gray-500">{emp.email}</p>
                   </div>
                 </td>
 
                 {/* ID */}
-                <td className="py-3 px-4">{emp.id}</td>
+                <td className="py-3 px-4">{emp.employeeId}</td>
 
                 {/* Department */}
-                <td className="py-3 px-4">{emp.department}</td>
+                <td className="py-3 px-4">{emp.department || "N/A"}</td>
 
                 {/* Designation */}
-                <td className="py-3 px-4">{emp.designation}</td>
+                <td className="py-3 px-4">{emp.designation || "N/A"}</td>
 
                 {/* Joining Date */}
-                <td className="py-3 px-4">{emp.joiningDate}</td>
+                <td className="py-3 px-4">{emp.createdAt.split("T")[0]}</td>
+
 
                 {/* Status */}
                 <td className="py-3 px-4">
