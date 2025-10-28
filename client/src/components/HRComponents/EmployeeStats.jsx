@@ -1,12 +1,12 @@
-import React from "react";
-import { Download, UserPlus } from "lucide-react";
+import React, { useState } from "react";
+import { Download, UserPlus, Building2 } from "lucide-react";
 import { stats } from "../../assets/Data.js";
-import { useState } from "react";
 import AddEmployeeForm from "./AddEmployeeForm.jsx";
-
+import CreateDepartment from "./CreateDepartment.jsx";
 
 const EmployeeStats = () => {
   const [showForm, setShowForm] = useState(false);
+  const [showDeptForm, setShowDeptForm] = useState(false);
 
   return (
     <div className="mb-6 relative">
@@ -22,15 +22,27 @@ const EmployeeStats = () => {
         </div>
 
         <div className="flex gap-3">
+          {/* Export */}
           <button className="flex items-center gap-2 px-4 py-2 bg-white border rounded-lg shadow-sm hover:bg-gray-50 cursor-pointer">
-            <Download className="w-4 h-4 " />
+            <Download className="w-4 h-4" />
             Export
           </button>
+
+          {/* Create Department */}
+          <button
+            className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg shadow-sm hover:bg-green-700 cursor-pointer"
+            onClick={() => setShowDeptForm(true)}
+          >
+            <Building2 className="w-4 h-4" />
+            Create Department
+          </button>
+
+          {/* Add Employee */}
           <button
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-sm hover:bg-blue-700 cursor-pointer"
             onClick={() => setShowForm(true)}
           >
-            <UserPlus className="w-4 h-4 " />
+            <UserPlus className="w-4 h-4" />
             Add Employee
           </button>
         </div>
@@ -68,8 +80,9 @@ const EmployeeStats = () => {
         })}
       </div>
 
-      {/* Modal */}
+      {/* Modals */}
       {showForm && <AddEmployeeForm onClose={() => setShowForm(false)} />}
+      {showDeptForm && <CreateDepartment onClose={() => setShowDeptForm(false)} />}
     </div>
   );
 };
