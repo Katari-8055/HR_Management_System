@@ -49,7 +49,7 @@ const EmployeeList = () => {
                 <td className="py-3 px-4">{emp.employeeId}</td>
 
                 {/* Department */}
-                <td className="py-3 px-4">{emp.department || "N/A"}</td>
+                <td className="py-3 px-4">{emp.department?.name || "N/A"}</td>
 
                 {/* Designation */}
                 <td className="py-3 px-4">{emp.designation || "N/A"}</td>
