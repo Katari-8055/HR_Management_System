@@ -24,11 +24,75 @@ export const getHRDetails = async (req, res) => {
 
 
 export const getAllEmployees = async (req, res) => {
-    try {
-        const employees = await prisma.employee.findMany();
-        return res.json({ success: true, employees });
-    } catch (error) {
-        console.error("Error fetching employees:", error);
-        return res.status(500).json({ success: false, message: "Failed to fetch employees", error: error.message });
+  try {
+    const employees = await prisma.employee.findMany({
+      include: {
+        department: true, 
+      },
+    });
+
+    return res.json({ success: true, employees });
+  } catch (error) {
+    console.error("Error fetching employees:", error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Failed to fetch employees", error: error.message });
+  }
+};
+
+
+//-------------------------------Add Dipartment-----------------------------//
+
+
+
+export const addDepartment = async (req, res) => {
+  const { name } = req.body;
+
+  try {
+
+    
+    const existing = await prisma.department.findUnique({
+      where: { name },
+    });
+
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: "Department with this name already exists",
+      });
     }
+
+    const newDepartment = await prisma.department.create({
+      data: { name },
+    });
+
+    
+    return res.status(201).json({
+      success: true,
+      message: "Department added successfully",
+      department: newDepartment,
+    });
+
+  } catch (error) {
+    console.error("Error adding department:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error while creating department",
+      error: error.message,
+    });
+  }
+};
+
+
+//-------------------------------Get Departments-----------------------------//
+
+
+export const getDepartments = async (req, res) => {
+  try {
+    const departments = await prisma.department.findMany();
+    return res.json({ success: true, departments });
+  } catch (error) {
+    console.error("Error fetching departments:", error);
+  }
 }
