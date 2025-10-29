@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const AddEmployeeForm = ({ onClose }) => {
@@ -8,11 +8,27 @@ const AddEmployeeForm = ({ onClose }) => {
     email: "",
     salary: "",
     employeeId: "",
+    departmentName: "", 
   });
 
-  const [loading, setLoading] = useState(false); // 👈 loading state
+  const [departments, setDepartments] = useState([]); 
+  const [loading, setLoading] = useState(false);
 
-  const handleChange =  (e) => {
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/hr/getDepartments", {
+          withCredentials: true,
+        });
+        setDepartments(res.data.departments);
+      } catch (error) {
+        console.error("Error fetching departments:", error);
+      }
+    };
+    fetchDepartments();
+  }, []);
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -27,7 +43,11 @@ const AddEmployeeForm = ({ onClose }) => {
     console.log("Employee Data:", formData);
 
     try {
-      const res = await axios.post("http://localhost:3000/api/hr/addEmployee", formData, { withCredentials: true });
+      const res = await axios.post(
+        "http://localhost:3000/api/hr/addEmployee",
+        formData,
+        { withCredentials: true }
+      );
       console.log("Server Response:", res.data);
       setLoading(false);
       onClose();
@@ -128,6 +148,27 @@ const AddEmployeeForm = ({ onClose }) => {
               placeholder="Enter employee ID"
               required
             />
+          </div>
+
+          {/* 👇 Department Dropdown */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Department
+            </label>
+            <select
+              name="departmentName"
+              value={formData.departmentName}
+              onChange={handleChange}
+              className="w-full mt-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              required
+            >
+              <option value="">Select Department</option>
+              {departments.map((dept) => (
+                <option key={dept.id} value={dept.name}>
+                  {dept.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           {/* Buttons */}
