@@ -51,7 +51,7 @@ model Employee {
   passport          String?          @unique
   role              Roles            @default(EMPLOYEE)
   departmentId      String?
-  teamId            String?
+  projectId            String?
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
   setupToken        String?
@@ -59,8 +59,8 @@ model Employee {
   password          String?
   image             String?
   department        Department?      @relation(fields: [departmentId], references: [id])
-  team              Team?            @relation("TeamMembers", fields: [teamId], references: [id])
-  managedTeams      Team[]           @relation("TeamManager")
+  project            Project?            @relation("ProjectMembers", fields: [projectId], references: [id])
+  managedProjects      Project[]           @relation("ProjectManager")
 }
 
 model Department {
@@ -69,15 +69,23 @@ model Department {
   employees Employee[]
 }
 
-model Team {
+model Project {
   id          String     @id @default(cuid())
   name        String
   description String?
+  status      Status
   managerId   String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-  members     Employee[] @relation("TeamMembers")
-  manager     Employee   @relation("TeamManager", fields: [managerId], references: [id])
+  members     Employee[] @relation("ProjectMembers")
+  manager     Employee   @relation("ProjectManager", fields: [managerId], references: [id])
+}
+
+enum Status {
+  Ongoing
+  Pending
+  Cancelled
+  Completed
 }
 
 enum Role {
@@ -110,7 +118,4 @@ enum Roles {
   EMPLOYEE
 }
 
-enum TeamRole {
-  MEMBER
-  LEAD
-}
+
