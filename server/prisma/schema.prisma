@@ -73,7 +73,8 @@ model Project {
   id          String     @id @default(cuid())
   name        String
   description String?
-  status      Status
+  status      Status     @default(Ongoing)
+  Deadline    DateTime?
   managerId   String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
