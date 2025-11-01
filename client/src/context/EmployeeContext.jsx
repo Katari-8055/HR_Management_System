@@ -5,6 +5,7 @@ export const EmployeeContext = createContext();
 
 export const EmployeeProvider = ({ children }) => {
   const [employees, setEmployees] = useState([]);
+  const [projects, setProjects] = useState([]);
 
   const getAllEmployee = async () => {
   try {
@@ -17,9 +18,18 @@ export const EmployeeProvider = ({ children }) => {
   }
 };
 
+  const getProjects = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/hr/getProjects", {withCredentials: true});
+      setProjects(res.data.projects);
+    } catch (error) {
+      console.error("Error fetching projects:", error.response?.data || error.message);
+    }
+  }
+
 
   return (
-    <EmployeeContext.Provider value={{ employees, setEmployees, getAllEmployee }}>
+    <EmployeeContext.Provider value={{ employees, setEmployees, getAllEmployee, getProjects, projects, setProjects }}>
       {children}
     </EmployeeContext.Provider>
   );
