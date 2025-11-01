@@ -50,17 +50,36 @@ model Employee {
   aadhaar           String?          @unique
   passport          String?          @unique
   role              Roles            @default(EMPLOYEE)
+
   departmentId      String?
-  projectId            String?
+  projectId         String?
+
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
   setupToken        String?
   setupTokenExpiry  DateTime?
   password          String?
   image             String?
-  department        Department?      @relation(fields: [departmentId], references: [id])
-  project            Project?            @relation("ProjectMembers", fields: [projectId], references: [id])
-  managedProjects      Project[]           @relation("ProjectManager")
+
+  department  Department? @relation(fields: [departmentId], references: [id])
+  project     Project?    @relation(fields: [projectId], references: [id])   // ✅ CLEAN
+  managedProjects Project[] @relation("ProjectManager")
+}
+
+model Project {
+  id          String     @id @default(cuid())
+  name        String
+  client      String
+  description String?
+  status      Status     @default(Ongoing)
+  Deadline    DateTime?
+  managerId   String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  members     Employee[]
+  
+  manager     Employee   @relation("ProjectManager", fields: [managerId], references: [id])
 }
 
 model Department {
@@ -69,18 +88,7 @@ model Department {
   employees Employee[]
 }
 
-model Project {
-  id          String     @id @default(cuid())
-  name        String
-  description String?
-  status      Status     @default(Ongoing)
-  Deadline    DateTime?
-  managerId   String
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  members     Employee[] @relation("ProjectMembers")
-  manager     Employee   @relation("ProjectManager", fields: [managerId], references: [id])
-}
+
 
 enum Status {
   Ongoing
