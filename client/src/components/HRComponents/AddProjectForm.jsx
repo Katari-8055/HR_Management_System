@@ -7,14 +7,14 @@ export default function AddProjectForm({ onClose, onCreateProject }) {
     name: "",
     client: "",
     managerId: "",
-    deadline: "",
-    employees: [],
+    Deadline: "",
+    employees: [], // ✅ Array of employee IDs
   });
 
   const [employees, setEmployees] = useState([]);
   const [employeeInput, setEmployeeInput] = useState("");
   const [managers, setManagers] = useState([]);
-
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchEmployees();
@@ -22,37 +22,44 @@ export default function AddProjectForm({ onClose, onCreateProject }) {
 
   async function fetchEmployees() {
     try {
-      const res = await axios.get("http://localhost:3000/api/hr/getAllEmployees", {
-      withCredentials: true,
-    });
-    setEmployees(res.data.employees);
-    setManagers(res.data.employees);
-    console.log("Fetched employees:", res.data.employees);
+      const res = await axios.get(
+        "http://localhost:3000/api/hr/getAllEmployees",
+        {
+          withCredentials: true,
+        }
+      );
+
+      setEmployees(res.data.employees);
+      setManagers(res.data.employees);
+      // console.log("Fetched employees:", res.data.employees);
     } catch (error) {
       console.error("Failed to fetch employees", error);
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
-
-    const payload = {
-      ...newProject,
-      deadline: newProject.deadline
-        ? new Date(newProject.deadline).toISOString()
-        : null,
-    };
-
-    onCreateProject(payload);
-
-    setNewProject({
-      name: "",
-      client: "",
-      status: "",
-      managerId: "",
-      deadline: "",
-      employees: [],
-    });
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/api/hr/addProject",
+        newProject,
+        { withCredentials: true }
+      );
+      console.log("Project created:", res.data);
+      onCreateProject(res.data.project);
+      setNewProject({
+        name: "",
+        client: "",
+        managerId: "",
+        Deadline: "",
+        employees: [],
+      });
+      setLoading(false);
+      onClose();
+    } catch (error) {
+      console.error("Failed to create project", error);
+    }
   };
 
   return (
@@ -88,11 +95,11 @@ export default function AddProjectForm({ onClose, onCreateProject }) {
           {/* ✅ Deadline */}
           <input
             type="date"
-            value={newProject.deadline}
+            value={newProject.Deadline}
             onChange={(e) =>
-              setNewProject({ ...newProject, deadline: e.target.value })
+              setNewProject({ ...newProject, Deadline: e.target.value })
             }
-            className="border rounded-lg p-2"
+            className="border rounded-lg p-2 "
           />
 
           {/* ✅ Manager input from EMPLOYEES only */}
@@ -101,7 +108,7 @@ export default function AddProjectForm({ onClose, onCreateProject }) {
             onChange={(e) =>
               setNewProject({ ...newProject, managerId: e.target.value })
             }
-            className="border rounded-lg p-2"
+            className="border rounded-lg p-2 cursor-pointer"
             required
           >
             <option value="">Select Manager</option>
@@ -113,44 +120,44 @@ export default function AddProjectForm({ onClose, onCreateProject }) {
           </select>
 
           {/* ✅ Employees Dropdown + Add */}
-          
+          <div className="flex gap-2 mt-2">
+            <select
+              value={employeeInput}
+              onChange={(e) => setEmployeeInput(e.target.value)}
+              className="border rounded-lg p-2 flex-1 cursor-pointer"
+            >
+              <option value="">Select Employee</option>
+              {employees.map((emp) => (
+                <option key={emp.id} value={emp.id}>
+                  {emp.firstName}
+                </option>
+              ))}
+            </select>
 
-            <div className="flex gap-2 mt-2">
-              <select
-                value={employeeInput}
-                onChange={(e) => setEmployeeInput(e.target.value)}
-                className="border rounded-lg p-2 flex-1"
-              >
-                <option value="">Select Employee</option>
-                {employees.map((emp) => (
-                  <option key={emp.id} value={emp.firstName}>
-                    {emp.firstName}
-                  </option>
-                ))}
-              </select>
+            <button
+              type="button"
+              onClick={() => {
+                if (!employeeInput.trim()) return;
 
-              <button
-                type="button"
-                onClick={() => {
-                  if (!employeeInput.trim()) return;
+                setNewProject((prev) => ({
+                  ...prev,
+                  employees: [...prev.employees, employeeInput.trim()],
+                }));
 
-                  setNewProject((prev) => ({
-                    ...prev,
-                    employees: [...prev.employees, employeeInput.trim()],
-                  }));
+                setEmployeeInput("");
+              }}
+              className="px-3 py-2 bg-green-600 text-white rounded-lg"
+            >
+              Add
+            </button>
+          </div>
 
-                  setEmployeeInput("");
-                }}
-                className="px-3 py-2 bg-green-600 text-white rounded-lg"
-              >
-                Add
-              </button>
-            </div>
-
-            <ul className="list-disc list-inside text-gray-700 mt-2">
-              {newProject.employees.map((emp, i) => (
+          <ul className="list-disc list-inside text-gray-700 mt-2">
+            {newProject.employees.map((empId, i) => {
+              const emp = employees.find((e) => e.id === empId);
+              return (
                 <li key={i}>
-                  {emp}
+                  {emp ? emp.firstName : empId}
                   <button
                     type="button"
                     onClick={() =>
@@ -164,25 +171,25 @@ export default function AddProjectForm({ onClose, onCreateProject }) {
                     Remove
                   </button>
                 </li>
-              ))}
-            </ul>
-          
+              );
+            })}
+          </ul>
 
           {/* Buttons */}
           <div className="flex justify-end gap-3 mt-1">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-gray-200 rounded-lg"
+              className="px-4 py-2 bg-gray-200 rounded-lg cursor-pointer"
             >
               Cancel
             </button>
 
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer"
             >
-              Save
+              {loading ? "Creating..." : "Create Project"}
             </button>
           </div>
         </form>
