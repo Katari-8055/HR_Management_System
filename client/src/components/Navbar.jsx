@@ -11,7 +11,7 @@ const Navbar = () => {
 
         {/* Menu Items */}
         <div className="flex space-x-8 text-gray-700 font-medium">
-          <a href="/signup" className="hover:text-blue-600">Get Started</a>
+          <a href="/login" className="hover:text-blue-600">Get Started</a>
         
         </div>
       </div>
