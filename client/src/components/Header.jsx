@@ -14,7 +14,7 @@ const Header = () => {
         </p>
         <div className="space-x-4">
           <a
-            href="/signup"
+            href="/login"
             className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow hover:bg-gray-200"
           >
             Get Started
