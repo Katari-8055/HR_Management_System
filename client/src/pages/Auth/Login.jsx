@@ -37,7 +37,7 @@ const Login = () => {
 
         // ✅ Role ke hisaab se redirect----------------------------------->
         if (userRole === "hr") {
-          navigate("/hr/employeemanagement");
+          navigate("/hr/overview");
         } else if (userRole === "employee") {
           navigate("/emp");
         }else if(userRole==="admin"){ 
@@ -117,7 +117,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition cursor-pointer"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
